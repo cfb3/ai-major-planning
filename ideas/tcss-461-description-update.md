@@ -59,7 +59,9 @@ already fits the course.
 - If approved, the course is offered as TCSS 461 instead of 490. Prerequisite stays TCSS 360.
 - Charles will also propose, at the same meeting:
   - **ABET design elective:** count TCSS 461 as a design elective (the description already
-    centers on system design and architecture).
+    centers on system design and architecture). A design elective needs a design project for
+    most of the quarter; the course's moonshot project meets that, and the course will do the
+    ABET assessment work.
   - **$75 course fee:** to pay for a Claude Team account for each student in the course.
 - Meeting materials (claude.ai, private to Charles until shared):
   [slide deck](https://claude.ai/artifact/LTNGTN7kVbjG6oCKq45B2t) ·
@@ -71,7 +73,6 @@ already fits the course.
   to go to APC? Check with whoever handles course changes in SET.
 - Does anyone else teach 461, or count on its current content (MDD, UML, Eclipse)? Check before
   the meeting.
-- What does the ABET review need to see to accept 461 as a design elective?
 - Which approvals does a new course fee need beyond the CSS curriculum committee?
 - Does reusing 461 make it harder to add a separate, dedicated AI/SWD course number later?
 
