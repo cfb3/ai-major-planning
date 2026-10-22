@@ -1,0 +1,1313 @@
+<title>Two Degrees</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Roboto:wght@400;700&family=Roboto+Mono:wght@400;700&display=swap">
+<style>
+/* Two Degrees deck for the 2026-10-23 CS colleagues meeting. Built on the
+   TCSS 490 Course Forge deck runtime (docs/slides/class-2-workflow/index.html
+   in TCSS490-26-AUTUMN): base styles, deck chrome, Player and Ink are copied
+   from it; the Two degrees animation is this deck's own. */
+:root{
+  --claim:      clamp(1.7rem, min(4.2vw, 7.6vh), 4.2rem);
+  --stage-text: clamp(1rem, min(2.35vw, 3.8vh), 2.4rem);
+  --stage-code: clamp(.95rem, min(2.1vw, 3.3vh), 2.1rem);
+  --gutter:     max(16px, 3.5vw);
+  /* The site palette (docs/stylesheets/theme.css): Anthropic ivory, slate,
+     cloud, book cloth, clay, kraft, manilla. */
+  --card:#FAFAF7;          /* ivory light, the page */
+  --subtle:#F0F0EB;        /* ivory medium */
+  --ink:#191919;           /* slate dark */
+  --warm-gray:#666663;     /* cloud dark, 5.6:1 on ivory */
+  --rule:#D9D8D2;
+  --course-accent:#CC785C; /* book cloth: bars, meters */
+  --course-accent-dark:#B5583C; /* clay: plates, white 4.7:1 */
+  --term:#B5583C;          /* clay, 4.5:1 */
+  --def:#40403E;           /* slate light */
+  --hot:#D97757;           /* Claude orange: the one thing to look at */
+  --hot-soft:rgba(217,119,87,.16);
+  --open:#40403E;          /* open weights tag */
+  --manilla:#EBDBBC; --kraft:#D4A27F;
+  /* One color per session on the manager/clients slide. All clear 4.5:1 on ivory. */
+  --s1:#2F6B8A; --s2:#6E54A3; --s3:#A8456B; --s4:#D4A27F;
+  --mono:"Roboto Mono", ui-monospace, Menlo, Consolas, monospace;
+  color-scheme: light;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0; background:var(--card); color:var(--ink); overflow:hidden;
+  font-family:"Roboto",-apple-system,"Segoe UI",system-ui,sans-serif;
+  -webkit-font-smoothing:antialiased;
+}
+body.blank .deck-slide{visibility:hidden}
+a{color:var(--term)}
+
+.deck-slide{
+  position:fixed; inset:0; display:none; padding:4vh var(--gutter) 7vh;
+  flex-direction:column; justify-content:center; align-items:center; gap:2.4vh;
+}
+.deck-slide.on{display:flex}
+.deck-slide .head{text-align:center; width:100%; max-width:100%}
+.deck-slide .say{
+  margin:0 auto; text-align:center; text-wrap:balance;
+  font-size:var(--claim); line-height:1.1; font-weight:700;
+  letter-spacing:-.015em; max-width:100%;
+}
+.term{color:var(--term)}
+.def{color:var(--def)}
+.hot{color:var(--hot)}
+.deck-slide .sub{
+  margin:1.1rem auto 0; font-size:var(--stage-text); line-height:1.4; text-wrap:balance;
+  color:var(--warm-gray); max-width:100%; text-align:center; font-weight:400;
+}
+.deck-slide .stage{
+  width:100%; max-width:100%; margin:0 auto;
+  display:flex; flex-direction:column; justify-content:center;
+}
+code{font-family:var(--mono); font-size:.92em}
+
+.deck-slide.part{background:var(--course-accent-dark); color:#fff}
+.deck-slide.part .course{color:var(--manilla)}
+.deck-slide.part .course{
+  opacity:1;
+  font-size:clamp(1.1rem,min(2.7vw,5vh),2.7rem); letter-spacing:.05em;
+  text-transform:uppercase; margin:0 0 1.1rem; font-weight:700;
+  text-align:center; line-height:1.1;
+}
+.deck-slide.part .say{
+  color:#fff; max-width:100%; font-size:clamp(2rem,min(5.1vw,9.4vh),5.1rem);
+  line-height:1.08;
+}
+.deck-slide.part .sub{color:#fff}
+
+/* Further reading, pinned to the bottom of a slide. */
+.more{
+  position:absolute; left:var(--gutter); right:var(--gutter); bottom:2.6vh;
+  text-align:center; font-size:clamp(.75rem,1.15vw,1rem); color:var(--warm-gray);
+}
+.more b{font-weight:700; letter-spacing:.06em; text-transform:uppercase; font-size:.85em; margin-right:.5em}
+.more a{margin:0 .45em}
+
+/* Cards in a row: model tiers, products, jargon. */
+.cards{display:grid; gap:1.2vw; width:100%; font-size:calc(var(--stage-text) * .8)}
+.cards.c2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.cards.c3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.cards.c4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.cards.c5{grid-template-columns:repeat(5,minmax(0,1fr))}
+.card{
+  border:1px solid var(--rule); border-radius:5px; padding:1rem 1.1rem;
+  display:flex; flex-direction:column; gap:.35rem; min-width:0; text-align:left;
+}
+.card b{color:var(--term); font-weight:700; font-size:1.12em}
+.card span{color:var(--warm-gray); line-height:1.32}
+.card .tag{
+  align-self:flex-start; font-size:.68em; font-weight:700; letter-spacing:.06em;
+  text-transform:uppercase; padding:.12rem .45rem; border-radius:3px;
+  background:var(--subtle); color:var(--warm-gray);
+}
+.card.pick{border:2px solid var(--hot); background:#fff}
+.card.pick .tag{background:var(--course-accent-dark); color:#fff}
+.tag.open{background:var(--open) !important; color:#fff !important}
+.tag.closed{background:var(--subtle)}
+
+/* Relative meters on the model tier cards. */
+.meter{display:grid; grid-template-columns:4.2em 1fr; align-items:center; gap:.4rem; font-size:.78em; color:var(--warm-gray)}
+.meter i{display:block; height:.5em; border-radius:2px; background:var(--subtle); position:relative; overflow:hidden}
+.meter i::after{content:""; position:absolute; inset:0 auto 0 0; width:var(--v); background:var(--course-accent)}
+
+/* Where a feature works: a row of chips. */
+.where{display:flex; flex-wrap:wrap; justify-content:center; gap:.5rem; font-size:calc(var(--stage-text) * .62)}
+.where span{border:1px solid var(--rule); border-radius:99px; padding:.2rem .7rem; color:var(--warm-gray)}
+.where span.y{border-color:var(--course-accent); color:var(--course-accent-dark); font-weight:700}
+.where span.y::before{content:"✓ "}
+.where span.n{text-decoration:line-through; opacity:.6}
+.where span.p::before{content:"~ "}
+
+/* A plain list on the stage. */
+.list{margin:0 auto; padding:0; list-style:none; font-size:var(--stage-text); line-height:1.45; max-width:min(100%, 34em); text-align:left}
+.list li{padding:.25rem 0 .25rem 1.3em; position:relative}
+.list li::before{content:"›"; position:absolute; left:.2em; color:var(--course-accent); font-weight:700}
+
+/* Comparison table. */
+.tbl-wrap{overflow-x:auto; width:100%}
+table.cmp{border-collapse:collapse; margin:0 auto; font-size:calc(var(--stage-text) * .74)}
+table.cmp th, table.cmp td{border-bottom:1px solid var(--rule); padding:.5rem .9rem; text-align:left; vertical-align:top}
+table.cmp th{color:var(--warm-gray); font-weight:700; font-size:.85em; letter-spacing:.04em; text-transform:uppercase}
+table.cmp td:first-child{color:var(--term); font-weight:700; white-space:nowrap}
+
+/* Tokens: a sentence cut into its pieces. */
+.toks{display:flex; flex-wrap:wrap; justify-content:center; gap:.25rem; font-family:var(--mono); font-size:var(--stage-code)}
+.toks span{padding:.12rem .25rem; border-radius:3px; white-space:pre}
+.toks span:nth-child(4n+1){background:var(--manilla)}
+.toks span:nth-child(4n+2){background:#E5E4DF}
+.toks span:nth-child(4n+3){background:rgba(204,120,92,.22)}
+.toks span:nth-child(4n+4){background:rgba(212,162,127,.42)}
+.tokfacts{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1.2vw; width:100%; font-size:calc(var(--stage-text) * .78); margin-top:1.2vh}
+
+/* The memory stack on the context slides. */
+.layers{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1.2vw; width:100%; font-size:calc(var(--stage-text) * .8)}
+.layers .card.dim{opacity:.38}
+
+.deck-bar{position:fixed; left:0; right:0; bottom:0; height:3px; background:var(--subtle); z-index:40}
+.deck-bar > i{display:block; height:100%; width:0; background:var(--course-accent)}
+.deck-num{
+  position:fixed; right:1.6vw; bottom:1.6vh; font-size:.85rem; color:var(--warm-gray);
+  z-index:40; font-variant-numeric:tabular-nums;
+}
+.deck-help{
+  position:fixed; left:1.6vw; bottom:1.4vh; font-size:.76rem; color:var(--warm-gray);
+  z-index:40; opacity:.5;
+}
+.deck-nav{position:fixed; right:calc(1.6vw + 4.5em); bottom:1vh; z-index:41; display:flex; gap:.3rem}
+.deck-nav button{
+  font:inherit; font-size:.8rem; border:1px solid var(--rule); background:var(--card); color:var(--warm-gray);
+  border-radius:4px; padding:.15rem .6rem; cursor:pointer;
+}
+.deck-nav button:focus-visible{outline:2px solid var(--course-accent); outline-offset:2px}
+/* Slide list: every slide by title, grouped under the part dividers. */
+.toc{
+  position:fixed; top:0; right:0; bottom:0; z-index:70; width:min(380px, 92vw); overflow-y:auto;
+  background:#fff; border-left:1px solid var(--rule); box-shadow:-10px 0 30px rgba(25,25,25,.15); padding:0 0 1rem;
+}
+.toc[hidden]{display:none}
+.toc-head{position:sticky; top:0; display:flex; justify-content:space-between; align-items:center; padding:.8rem 1rem; background:#fff; border-bottom:1px solid var(--rule)}
+.toc-head b{font-size:1rem; color:var(--ink)}
+.toc-head button{border:0; background:transparent; font-size:1.3rem; line-height:1; cursor:pointer; color:var(--warm-gray); padding:.1rem .4rem; border-radius:4px}
+.toc-head button:hover{background:var(--subtle)}
+.toc ol{list-style:none; margin:0; padding:.4rem 0}
+.toc li button{
+  display:flex; gap:.6rem; width:100%; text-align:left; border:0; background:transparent; cursor:pointer;
+  padding:.4rem 1rem; font:inherit; font-size:.86rem; line-height:1.35; color:var(--ink);
+}
+.toc li button:hover,.toc li button:focus-visible{background:var(--subtle); outline:none}
+.toc li button .n{flex:none; width:1.8em; text-align:right; color:var(--warm-gray); font-variant-numeric:tabular-nums}
+.toc li.part button{margin-top:.5rem; font-weight:700; color:var(--term); text-transform:uppercase; letter-spacing:.05em; font-size:.76rem}
+.toc li.anim button .t::after{content:" ▶"; color:var(--course-accent-dark); font-size:.8em}
+.toc li.here button{background:rgba(181,88,60,.1); box-shadow:inset 3px 0 0 var(--course-accent-dark)}
+
+/* ---------- Animation slides ----------
+   No claim on these slides: the claim gets its own slide just before, and
+   the animation takes the whole stage under a small label. */
+.deck-slide.anim{justify-content:flex-start; padding-top:3vh; gap:1.2vh}
+.deck-slide.anim .loop,.deck-slide.anim .flow,.deck-slide.anim .seq,.deck-slide.anim .chat{width:min(100%, 136vh)}
+.deck-slide.anim .player,.deck-slide.anim .loopbar,.animlabel{width:min(100%, 136vh); margin-inline:auto}
+.animlabel{margin-bottom:.8vh; font-size:clamp(.8rem,1.3vw,1.05rem); font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--term); text-align:left}
+
+/* ---------- Player controls ---------- */
+.player{display:flex; align-items:center; gap:.9rem; margin-top:1.4vh; color:var(--ink)}
+.ptp{display:flex; align-items:center; gap:.15rem; flex:none}
+.ptp button,.pauto{
+  display:grid; place-items:center; width:2.1rem; height:2.1rem; padding:0; border:0; border-radius:50%;
+  background:transparent; color:var(--ink); cursor:pointer; transition:background .15s, color .15s;
+}
+.ptp button svg,.pauto svg{width:1.25rem; height:1.25rem}
+.ptp button:hover,.pauto:hover{background:var(--subtle)}
+.ptp .ppb{width:2.7rem; height:2.7rem; margin:0 .2rem; background:var(--course-accent-dark); color:#fff; box-shadow:0 2px 8px rgba(181,88,60,.3)}
+.ptp .ppb svg{width:1.35rem; height:1.35rem; display:block}
+.ptp .ppb span{display:none}
+.ptp .ppb.playing .i-pause,.ptp .ppb:not(.playing) .i-play{display:block}
+.ptp .ppb:hover{background:#A04D33}
+.ptp button:focus-visible,.pauto:focus-visible,.pchip:focus-visible,.pbar:focus-visible{outline:2px solid var(--course-accent); outline-offset:2px}
+/* The bar: segments split by gaps at each stop, YouTube-style. */
+.pbar{position:relative; flex:1; min-width:0; height:1.6rem; cursor:pointer; touch-action:none}
+.psegs{position:absolute; left:0; right:0; top:50%; height:5px; transform:translateY(-50%); transition:height .15s}
+.pbar:hover .psegs,.pbar:focus-visible .psegs{height:8px}
+.pseg{position:absolute; top:0; bottom:0; padding-right:3px; box-sizing:border-box}
+.pseg::before{content:""; position:absolute; inset:0 3px 0 0; border-radius:3px; background:#E5E4DF; transition:background .15s}
+.pseg.hot::before{background:#D9D8D2}
+.pseg i{position:absolute; left:0; top:0; bottom:0; width:0; max-width:calc(100% - 3px); border-radius:3px; background:var(--course-accent-dark)}
+.pseg.accent::before{background:rgba(212,162,127,.55)}
+.pseg.accent i{background:var(--kraft)}
+/* Story and End bookend the run in slate, a neutral that does not read as go or done. */
+.pseg.quiet::before{background:#D9D8D2}
+.pseg.quiet i{background:#40403E}
+.pknob{
+  position:absolute; top:50%; width:14px; height:14px; margin:-7px 0 0 -7px; border-radius:50%;
+  background:var(--course-accent-dark); box-shadow:0 0 0 3px rgba(181,88,60,.2); opacity:0; transition:opacity .15s; pointer-events:none;
+}
+.pbar:hover .pknob,.pbar:focus-visible .pknob{opacity:1}
+.ptip{
+  position:absolute; bottom:calc(100% + .35rem); transform:translateX(-50%); white-space:nowrap; pointer-events:none;
+  background:#191919; color:#F0F0EB; font-size:.78rem; padding:.3rem .6rem; border-radius:5px; box-shadow:0 4px 14px rgba(25,25,25,.2); z-index:8;
+}
+.ptime{flex:none; width:7.2em; text-align:right; font-size:.8rem; color:var(--warm-gray); font-variant-numeric:tabular-nums}
+/* Speed: a chip with a vertical slider that pops up above it. */
+.pspeed{position:relative; flex:none}
+.pchip{
+  font:inherit; font-size:.8rem; font-weight:700; font-variant-numeric:tabular-nums; width:4.2em; height:1.75rem; text-align:center;
+  border:1px solid var(--rule); border-radius:99px; background:var(--card); color:var(--ink); cursor:pointer; padding:0 .55rem;
+}
+.pchip:hover{background:var(--subtle)}
+.ppop{
+  position:absolute; bottom:calc(100% + .45rem); left:50%; transform:translateX(-50%); z-index:9;
+  display:flex; flex-direction:column; align-items:center; gap:.35rem; padding:.55rem .45rem;
+  background:#fff; border:1px solid var(--rule); border-radius:10px; box-shadow:0 8px 24px rgba(25,25,25,.16);
+}
+.ppop[hidden]{display:none}
+.ppop input{writing-mode:vertical-lr; direction:rtl; width:1.4rem; height:7.5rem; margin:0; accent-color:var(--course-accent-dark); cursor:pointer}
+.ppop .pv{width:3.6em; text-align:center; font-size:.78rem; font-weight:700; color:var(--ink); font-variant-numeric:tabular-nums}
+.ppop .pmin{font-size:.68rem; color:var(--warm-gray)}
+/* Autoplay: lit when the animation plays straight through. */
+.pauto{color:var(--warm-gray); opacity:.6}
+.pauto[aria-pressed="true"]{color:var(--course-accent-dark); opacity:1; background:rgba(181,88,60,.1)}
+.loopbar{display:block; position:relative; margin-top:.6em}
+.deck-slide.anim .player{margin-top:.2vh}
+/* Explanations. Any element with data-more explains itself on hover, focus or tap;
+   a beat with more text gets an i button at the end of its caption. */
+.anim [data-more]{cursor:help}
+.anim .xhot{outline:1.5px dashed var(--kraft); outline-offset:2px}
+.animlabel{display:flex; justify-content:space-between; align-items:baseline; gap:1rem}
+.animlabel small{font-size:.78em; font-weight:400; letter-spacing:0; text-transform:none; color:var(--warm-gray)}
+.xtip{
+  position:fixed; z-index:60; max-width:22rem; padding:.55rem .75rem; border-radius:7px; pointer-events:none;
+  background:#191919; color:#F0F0EB; font-size:.85rem; line-height:1.45; box-shadow:0 8px 24px rgba(25,25,25,.25); white-space:pre-line;
+}
+.xtip[hidden]{display:none}
+.xtip b{color:var(--kraft); display:block; font-size:.78rem; letter-spacing:.06em; text-transform:uppercase; margin-bottom:.15rem}
+.pmore{
+  display:inline-grid; place-items:center; width:1.35em; height:1.35em; margin-left:.45em; vertical-align:.05em; padding:0;
+  border:1.5px solid var(--course-accent-dark); border-radius:50%; background:transparent; color:var(--course-accent-dark);
+  font:700 .72em/1 Georgia, "Times New Roman", serif; font-style:italic; cursor:pointer;
+}
+.pmore:hover,.pmore[aria-expanded="true"]{background:var(--course-accent-dark); color:#fff}
+.pmore:focus-visible{outline:2px solid var(--course-accent); outline-offset:2px}
+.pmorebox{
+  position:absolute; left:0; bottom:calc(100% + .5rem); z-index:7; max-width:min(46rem, 100%); padding:.75rem 2.2rem .75rem .9rem;
+  background:#fff; border:1px solid var(--rule); border-left:4px solid var(--course-accent-dark); border-radius:6px;
+  box-shadow:0 10px 30px rgba(25,25,25,.18); font-size:calc(var(--stage-text) * .62); line-height:1.5; color:var(--ink);
+}
+.pmorebox[hidden]{display:none}
+.pmorebox button{position:absolute; top:.35rem; right:.4rem; border:0; background:transparent; font-size:1.1rem; line-height:1; color:var(--warm-gray); cursor:pointer; padding:.2rem .35rem; border-radius:4px}
+.pmorebox button:hover{background:var(--subtle)}
+.loopcap{min-width:0; height:2.9em; overflow:visible; margin:0; text-align:left; font-size:calc(var(--stage-text) * .74); color:var(--ink); text-wrap:balance}
+.loopcap .n{color:var(--term); font-weight:700; margin-right:.5em; font-variant-numeric:tabular-nums}
+@media (max-width:760px){ .ptime{display:none} .player{gap:.4rem} }
+/* Short screens (a phone on its side): drop the extras so the controls fit. */
+@media (max-height:520px){
+  .more,.deck-help{display:none}
+  .deck-slide.anim{padding-top:1.5vh; padding-bottom:12vh; gap:.6vh}
+  .deck-slide.anim .loop,.deck-slide.anim .flow,.deck-slide.anim .seq,.deck-slide.anim .chat,.deck-slide.anim .player,.deck-slide.anim .loopbar,.deck-slide.anim .animlabel{width:min(100%, 122vh)}
+  .animlabel small{display:none}
+  .ptp button,.pauto{width:1.8rem; height:1.8rem}
+  .ptp .ppb{width:2.2rem; height:2.2rem}
+  .loopcap{height:2.6em}
+  .ptime{display:none}
+  .player{gap:.45rem}
+  .pchip{width:3.6em}
+}
+/* A phone held upright: the diagrams are too small to read, so ask for a turn. */
+.rotate{display:none}
+@media (orientation:portrait) and (max-width:760px){
+  .deck-slide.anim .stage > :not(.rotate){display:none}
+  .deck-slide.anim .rotate{
+    display:flex; flex-direction:column; align-items:center; gap:1rem; margin:auto; padding:2rem 1.5rem; text-align:center;
+    border:1px solid var(--rule); border-radius:12px; background:#fff; max-width:22rem; color:var(--ink); font-size:1.05rem; line-height:1.45;
+  }
+  .deck-slide.anim .rotate svg{width:3.5rem; height:3.5rem; color:var(--course-accent-dark); animation:turn 2.4s ease-in-out infinite}
+  .deck-slide.anim .rotate small{color:var(--warm-gray); font-size:.85rem}
+}
+@keyframes turn{0%,30%{transform:rotate(0)} 60%,100%{transform:rotate(-90deg)}}
+
+.entry .flag{background:var(--hot-soft); box-shadow:0 0 0 .25em var(--hot-soft); border-radius:2px}
+
+@media (max-width:760px){
+  .cards.c3,.cards.c4,.cards.c5{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .layers,.tokfacts{grid-template-columns:1fr}
+  .deck-help{display:none}
+  .deck-slide{justify-content:flex-start; overflow-y:auto; padding-top:6vh}
+}
+@media (prefers-reduced-motion:reduce){
+  .loop .blk{animation:none}
+  .loop .node,.loop .meterbar i{transition:none}
+}
+@media print{
+  body{overflow:visible}
+  .deck-slide{position:static; display:flex; page-break-after:always; height:100vh}
+  .deck-bar,.deck-num,.deck-help,.deck-nav{display:none}
+}
+/* ---------- Ink: draw on any slide with the mouse or a pen ---------- */
+#ink{position:fixed; inset:0; width:100vw; height:100vh; z-index:30; pointer-events:none; touch-action:none}
+#ink.on{pointer-events:auto; cursor:crosshair}
+#ink.on.erase{cursor:cell}
+.ink-tools{
+  position:fixed; right:.6rem; top:50%; transform:translateY(-50%); z-index:50;
+  display:flex; flex-direction:column; align-items:center; gap:.2rem; padding:.35rem .25rem;
+  background:#fff; border:1px solid var(--rule); border-radius:12px; box-shadow:0 6px 20px rgba(30,30,30,.1);
+  opacity:.35; transition:opacity .2s;
+}
+.ink-tools:hover,.ink-tools:focus-within,.ink-tools.live{opacity:1}
+.ink-tools button{
+  display:grid; place-items:center; width:2rem; height:2rem; padding:0; border:0; border-radius:8px;
+  background:transparent; color:var(--ink); cursor:pointer; font:700 .8rem/1 "Roboto", sans-serif;
+}
+.ink-tools button svg{width:1.15rem; height:1.15rem}
+.ink-tools button:hover{background:var(--subtle)}
+.ink-tools button[aria-pressed="true"]{background:var(--course-accent-dark); color:#fff}
+.ink-tools button:focus-visible{outline:2px solid var(--course-accent); outline-offset:1px}
+.ink-tools hr{width:1.4rem; border:0; border-top:1px solid var(--rule); margin:.15rem 0}
+.ink-tools .sw{width:1.5rem; height:1.5rem; border-radius:50%}
+.ink-tools .sw i{display:block; width:.95rem; height:.95rem; border-radius:50%; background:var(--c)}
+.ink-tools .sw[aria-pressed="true"]{background:transparent; box-shadow:inset 0 0 0 2px var(--c)}
+/* A text label being typed; once committed it is drawn on the canvas like any stroke. */
+.ink-edit{
+  position:fixed; z-index:52; min-width:1.5ch; padding:0 .15em; white-space:pre; outline:1.5px dashed var(--course-accent);
+  outline-offset:3px; background:rgba(252,252,250,.6); font-family:"Patrick Hand", cursive; line-height:1.15; cursor:text;
+}
+.ink-toast{
+  position:fixed; right:3.6rem; top:50%; transform:translateY(-50%); z-index:51; pointer-events:none;
+  background:var(--ink); color:#fff; font-size:.85rem; padding:.35rem .7rem; border-radius:6px;
+}
+.ink-toast[hidden]{display:none}
+@media (max-width:760px){ .ink-tools{display:none} }
+@media print{ #ink,.ink-tools{display:none} }
+
+/* ---------- Two degrees: students flowing through the program ----------
+   A stage of absolutely placed nodes over a canvas of moving dots. The beat
+   index sets classes p0..pN on .deg; CSS moves the nodes, the canvas routes
+   the dots by the current phase. */
+.deck-slide.anim .deg{width:min(100%, 136vh)}
+.deg{
+  --ml:#2F6B8A; --ml-soft:rgba(47,107,138,.14);
+  --se:#B5583C; --se-soft:rgba(181,88,60,.14);
+  position:relative; aspect-ratio:16/7.4; max-width:100%; margin:0 auto;
+  font-size:calc(var(--stage-text) * .6); line-height:1.25;
+}
+.deg canvas{position:absolute; inset:0; width:100%; height:100%; pointer-events:none}
+.deg .nd{
+  position:absolute; transform:translate(-50%,-50%);
+  transition:left 1.1s cubic-bezier(.65,0,.25,1), top 1.1s cubic-bezier(.65,0,.25,1),
+             opacity .7s ease, transform .7s cubic-bezier(.3,1.4,.5,1), box-shadow .8s ease;
+}
+.deg.fast, .deg.fast *{transition:none !important; animation:none !important}
+
+/* Students, on the left. */
+.deg .src{left:6.5%; top:50%; display:flex; flex-direction:column; align-items:center; gap:.3em; text-align:center}
+.deg .src .ring{
+  width:3.4em; height:3.4em; border-radius:50%; background:#fff; border:2px solid var(--ink);
+  display:grid; place-items:center;
+}
+.deg .src .ring svg{width:1.9em; height:1.9em}
+.deg .src b{font-size:1em}
+
+/* Degree boxes. */
+.deg .box{
+  background:#fff; border:2px solid var(--ink); border-radius:6px; padding:.75em 1em;
+  display:flex; flex-direction:column; gap:.35em; text-align:left;
+}
+.deg .box h4{margin:0; font-size:1.35em; line-height:1.1}
+.deg .box small{color:var(--warm-gray); font-size:.85em}
+.deg .cs{left:36%; top:50%; width:21%}
+.deg .cs h4{font-size:1.45em}
+.deg .ml, .deg .se{left:36%; top:50%; opacity:0; transform:translate(-50%,-50%) scale(.7)}
+.deg .ml{width:31%; border-color:var(--ml); border-top-width:.45em}
+.deg .se{width:35%; border-color:var(--se); border-top-width:.45em}
+.deg .ml h4{color:var(--ml)}
+.deg .se h4{color:var(--se)}
+.deg .kind{font-size:.72em; font-weight:700; letter-spacing:.1em; text-transform:uppercase}
+.deg .ml .kind{color:var(--ml)} .deg .se .kind{color:var(--se)}
+.deg .chips{display:flex; flex-wrap:wrap; gap:.3em; margin-top:.15em}
+.deg .chips span{
+  font-size:.82em; padding:.12em .55em; border-radius:99px; white-space:nowrap;
+  opacity:0; transform:translateY(.5em) scale(.9);
+  transition:opacity .45s ease, transform .5s cubic-bezier(.3,1.5,.5,1);
+  transition-delay:calc(var(--i) * 140ms);
+}
+.deg .ml .chips span{background:var(--ml-soft); color:var(--ml)}
+.deg .se .chips span{background:var(--se-soft); color:var(--se)}
+
+/* Where graduates go, on the right. */
+.deg .dst{width:17%; text-align:left; display:flex; flex-direction:column; gap:.2em; padding-left:.7em; border-left:3px solid var(--rule)}
+.deg .res{left:90%; top:16%; border-left-color:var(--ml)}
+.deg .ind{left:90%; top:78%; border-left-color:var(--se)}
+.deg .dst b{font-size:1.05em}
+.deg .pct{
+  font-size:2.1em; font-weight:700; line-height:1; font-variant-numeric:tabular-nums;
+  opacity:0; transform:scale(.6); transform-origin:left center;
+  transition:opacity .5s ease, transform .6s cubic-bezier(.3,1.5,.5,1);
+}
+.deg .res .pct{color:var(--ml)} .deg .ind .pct{color:var(--se)}
+.deg .dst small{color:var(--warm-gray); font-size:.78em; opacity:0; transition:opacity .5s ease .3s}
+
+/* Side notes that pop in later. */
+.deg .tag{
+  width:19%; font-size:.86em; padding:.5em .75em; border-radius:6px; background:#fff;
+  opacity:0; transform:translate(-50%,-50%) scale(.6);
+}
+.deg .tag b{display:block; font-size:.8em; letter-spacing:.08em; text-transform:uppercase; margin-bottom:.15em}
+.deg .fac{left:19%; top:17%; border:2px solid var(--ml); color:var(--ink)}
+.deg .fac b{color:var(--ml)}
+.deg .enr{left:19%; top:83%; border:2px solid var(--se); color:var(--ink)}
+.deg .enr b{color:var(--se)}
+
+/* The closing question. */
+.deg .endq{
+  position:absolute; inset:8% 14%; display:flex; flex-direction:column; justify-content:center; align-items:center;
+  gap:.6em; text-align:center; background:rgba(250,250,247,.96); border:2px solid var(--course-accent-dark);
+  border-radius:8px; box-shadow:0 14px 40px rgba(25,25,25,.2);
+  opacity:0; transform:scale(.85); pointer-events:none;
+  transition:opacity .6s ease, transform .7s cubic-bezier(.3,1.4,.5,1);
+}
+.deg .endq p{margin:0; font-size:1.2em; color:var(--warm-gray)}
+.deg .endq h4{margin:0; font-size:2.3em; line-height:1.1; color:var(--ink); text-wrap:balance}
+.deg .endq h4 span{color:var(--term)}
+.deg .hours{display:flex; gap:.35em; align-items:center; margin-top:.4em}
+.deg .hours i{width:1.5em; height:1.5em; border-radius:3px; border:2px solid var(--course-accent); background:transparent}
+.deg .hours em{font-style:normal; font-weight:700; font-size:1.6em; color:var(--term); margin-left:.3em}
+.deg.p7 .hours i{animation:fillhr 3.2s ease-in-out infinite; animation-delay:calc(var(--i) * 160ms)}
+.deg.p7 .hours em{animation:blink 1.6s ease-in-out infinite}
+@keyframes fillhr{0%,15%{background:transparent} 45%,75%{background:var(--course-accent)} 100%{background:transparent}}
+@keyframes blink{0%,100%{opacity:1} 50%{opacity:.35}}
+
+/* Phases. p1: shares. p2: split. p3: CS/ML. p4: AI SE. p5: faculty. p6: enrollment. p7: question. */
+.deg.p1 .pct{opacity:1; transform:none}
+.deg.p1 .dst small{opacity:1}
+.deg.p2 .cs{opacity:0; transform:translate(-50%,-50%) scale(1.25)}
+.deg.p2 .ml{left:47%; top:22%; opacity:1; transform:translate(-50%,-50%)}
+.deg.p2 .se{left:47%; top:77%; opacity:1; transform:translate(-50%,-50%)}
+.deg.p3 .ml .chips span, .deg.p4 .se .chips span{opacity:1; transform:none}
+.deg.p5 .fac{opacity:1; transform:translate(-50%,-50%)}
+.deg.p5 .ml{box-shadow:0 0 0 .5em var(--ml-soft)}
+.deg.p6 .enr{opacity:1; transform:translate(-50%,-50%)}
+.deg.p6 .se{transform:translate(-50%,-50%) scale(1.06); box-shadow:0 0 0 .5em var(--se-soft)}
+.deg.p7 .endq{opacity:1; transform:none; pointer-events:auto}
+@media (prefers-reduced-motion:reduce){ .deg .nd,.deg .chips span,.deg .pct,.deg .endq{transition:none} .deg.p7 .hours i,.deg.p7 .hours em{animation:none} }
+</style>
+<section class="deck-slide part">
+  <div class="head">
+    <p class="course">CS colleagues · 2026-10-23</p>
+    <p class="say">One program, two degrees</p>
+    <p class="sub">A possible direction for Computer Science at UW Tacoma, for discussion</p>
+  </div>
+</section>
+
+<section class="deck-slide">
+  <div class="head">
+    <p class="say">Our CS degree already works as a <span class="term">service degree</span>. We could make that explicit.</p>
+  </div>
+  <div class="stage">
+    <ul class="list">
+      <li>Watch students flow through one CS degree, and see where they end up</li>
+      <li>Then the degree splits: research CS/ML, and AI Software Engineering</li>
+      <li>Why each side might want the split</li>
+      <li>Hover any part of the diagram for more</li>
+    </ul>
+  </div>
+</section>
+
+<section class="deck-slide anim">
+  <div class="animlabel"><span>One program, two degrees</span><small>Hover or tap any part for more</small></div>
+  <div class="deg" id="deg">
+    <canvas id="deg-fx" aria-hidden="true"></canvas>
+    <div class="nd src" data-more="Everyone who enters the program, from first-years to transfers.">
+      <div class="ring"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="8" cy="8" r="3.2" fill="none" stroke="#191919" stroke-width="1.8"/><circle cx="16.5" cy="9" r="2.6" fill="none" stroke="#191919" stroke-width="1.8"/><path d="M2.8 19c.6-3.4 2.7-5.2 5.2-5.2s4.6 1.8 5.2 5.2M13.2 14.6c.9-.9 2-1.4 3.3-1.4 2.2 0 3.9 1.6 4.4 4.6" fill="none" stroke="#191919" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+      <b>Students</b>
+    </div>
+    <div class="nd box cs" data-more="Today: one degree, one set of requirements, whatever a student plans to do after graduating.">
+      <h4>Computer Science</h4>
+      <small>One degree today</small>
+    </div>
+    <div class="nd box ml" data-more="A research-focused degree: more math, theory and machine learning, with less hand-written code now that AI tools write much of it.">
+      <span class="kind">Research</span>
+      <h4>CS / ML</h4>
+      <div class="chips"><span style="--i:0">Math</span><span style="--i:1">Theory</span><span style="--i:2">Machine learning</span><span style="--i:3">LLMs</span><span style="--i:4">Quantum?</span></div>
+    </div>
+    <div class="nd box se" data-more="A service degree for most students: building production software with AI, covering what AI-assisted coding does not provide on its own.">
+      <span class="kind">Service</span>
+      <h4>AI Software Engineering</h4>
+      <div class="chips"><span style="--i:0">Systems</span><span style="--i:1">Data</span><span style="--i:2">UI/UX</span><span style="--i:3">Process</span><span style="--i:4">Testing</span><span style="--i:5">DevOps</span></div>
+    </div>
+    <div class="nd dst res" data-more="Graduate school, research careers and highly specialized technical roles.">
+      <b>Grad school &amp; research</b>
+      <span class="pct" id="deg-res">8%</span>
+      <small>our estimate: 5–10%</small>
+    </div>
+    <div class="nd dst ind" data-more="Software development jobs in industry, increasingly done with AI.">
+      <b>Industry software jobs</b>
+      <span class="pct" id="deg-ind">92%</span>
+      <small>most graduates</small>
+    </div>
+    <div class="nd tag fac" data-more="If the service function moves to its own degree, CS can become more research-focused, with more advanced courses close to faculty research."><b>Research faculty</b>Teach advanced courses close to their research</div>
+    <div class="nd tag enr" data-more="Enrollment is expected to drop further in 2027–28, which makes a clear direction more urgent."><b>Enrollment</b>The service degree brings in most students</div>
+    <div class="endq" id="deg-end">
+      <p>To build either degree</p>
+      <h4>How many <span>hours</span> will you commit?</h4>
+      <div class="hours" aria-hidden="true"><i style="--i:0"></i><i style="--i:1"></i><i style="--i:2"></i><i style="--i:3"></i><i style="--i:4"></i><i style="--i:5"></i><i style="--i:6"></i><i style="--i:7"></i><em>?</em></div>
+    </div>
+  </div>
+  <div class="loopbar"><p class="loopcap" id="deg-cap" aria-live="polite"></p></div>
+  <div class="player" id="deg-player"></div>
+</section>
+
+<section class="deck-slide part">
+  <div class="head">
+    <p class="course">The question for today</p>
+    <p class="say">To build either degree, how many hours will you commit?</p>
+    <p class="sub">If the total is too small, an overhaul isn't viable. Enrollment is expected to drop further in 2027–28.</p>
+  </div>
+</section>
+<canvas id="ink" aria-hidden="true"></canvas>
+<div class="ink-tools" role="toolbar" aria-label="Drawing tools">
+  <button type="button" data-tool="" title="Point (Esc)" aria-label="Point" aria-pressed="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M5 3.5l13.5 8-5.6 1.4 3.3 5.9-2.3 1.3-3.3-5.9L6.4 18z"/></svg></button>
+  <button type="button" data-tool="pen" title="Pen (D)" aria-label="Pen" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M4 20l1-4.5L15.5 5a2.1 2.1 0 0 1 3 3L8 18.5zM13.5 7l3 3"/></svg></button>
+  <button type="button" data-tool="hl" title="Highlighter (H)" aria-label="Highlighter" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M9 14l-3 3v3h6l1.5-1.5M9 14l7-9 4 4-9 7zM4 21h16"/></svg></button>
+  <button type="button" data-tool="laser" title="Laser, fades on its own (L)" aria-label="Laser" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="17" cy="7" r="3" fill="currentColor"/><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-dasharray="2 3" d="M4 20c3-1 6-5 10-10"/></svg></button>
+  <button type="button" data-tool="arrow" title="Arrow (A)" aria-label="Arrow" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M5 19L19 5M10 5h9v9"/></svg></button>
+  <button type="button" data-tool="text" title="Text: click to type, Enter to finish (W)" aria-label="Text" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" d="M5 6V4.5h14V6M12 4.5v15M9 19.5h6"/></svg></button>
+  <button type="button" data-tool="erase" title="Eraser (E)" aria-label="Eraser" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M8 20h12M4.5 15.5l9-9a2 2 0 0 1 2.8 0l2.2 2.2a2 2 0 0 1 0 2.8L11 19.5H8z"/></svg></button>
+  <hr>
+  <button type="button" class="sw" data-color="ink" style="--c:#191919" title="Black (1)" aria-label="Black" aria-pressed="true"><i></i></button>
+  <button type="button" class="sw" data-color="clay" style="--c:#B5583C" title="Clay (2)" aria-label="Clay" aria-pressed="false"><i></i></button>
+  <button type="button" class="sw" data-color="val" style="--c:#2F6B8A" title="Blue (3)" aria-label="Blue" aria-pressed="false"><i></i></button>
+  <button type="button" class="sw" data-color="grn" style="--c:#3F6B28" title="Green (4)" aria-label="Green" aria-pressed="false"><i></i></button>
+  <hr>
+  <button type="button" data-act="keep" title="Keep ink when the animation moves on (K)" aria-label="Keep ink" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M9 4h6l-1 5 3 3H7l3-3zM12 12v8"/></svg></button>
+  <button type="button" data-act="clear" title="Clear this slide (C)" aria-label="Clear ink"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M5 7h14M10 7V4.5h4V7M7 7l1 13h8l1-13"/></svg></button>
+</div>
+<div class="ink-toast" hidden></div>
+<div class="deck-bar"><i></i></div>
+<div class="deck-num"></div>
+<div class="deck-help">→ next · ← back · T slides · B blank</div>
+<nav class="toc" id="toc" aria-label="All slides" hidden><div class="toc-head"><b>Slides</b><button type="button" id="toc-close" aria-label="Close">×</button></div><ol id="toc-list"></ol></nav>
+<div class="deck-nav"><button type="button" id="nav-toc" aria-label="All slides" aria-expanded="false" title="All slides (T)">☰ Slides</button><button type="button" id="nav-prev" aria-label="Previous slide">‹</button><button type="button" id="nav-next" aria-label="Next slide">›</button></div>
+
+<script>
+/* The class 1 deck runtime, plus the agent loop animation, which plays
+   while its slide is on and stops when it is not. */
+(function(){
+  const slides = [...document.querySelectorAll('.deck-slide')];
+  if (!slides.length) return;
+  const bar = document.querySelector('.deck-bar > i');
+  const num = document.querySelector('.deck-num');
+  let at = 0;
+
+  /* Diagram explanations: any [data-more] element shows its text on hover,
+     keyboard focus, or a tap. */
+  const xtip = document.createElement('div');
+  xtip.className = 'xtip'; xtip.hidden = true; xtip.setAttribute('role', 'tooltip');
+  document.body.appendChild(xtip);
+  let xFor = null;
+  function xShow(el){
+    if (xFor) xFor.classList.remove('xhot');
+    xFor = el; el.classList.add('xhot'); xtip.textContent = el.dataset.more; xtip.hidden = false;
+    const r = el.getBoundingClientRect(), w = xtip.offsetWidth, h = xtip.offsetHeight;
+    let x = r.left + r.width / 2 - w / 2, y = r.top - h - 8;
+    if (y < 8) y = Math.min(innerHeight - h - 8, r.bottom + 8);
+    xtip.style.left = Math.max(8, Math.min(innerWidth - w - 8, x)) + 'px'; xtip.style.top = y + 'px';
+  }
+  function xHide(){ if (xFor) xFor.classList.remove('xhot'); xFor = null; xtip.hidden = true; }
+  document.querySelectorAll('.anim [data-more]').forEach(el => { if (!el.hasAttribute('tabindex')) el.tabIndex = 0; });
+  document.addEventListener('pointerover', e => {
+    const el = e.target.closest('.anim [data-more]');
+    if (el && el.dataset.more) xShow(el); else if (xFor && e.pointerType === 'mouse') xHide();
+  });
+  document.addEventListener('focusin', e => { const el = e.target.closest && e.target.closest('.anim [data-more]'); if (el && el.dataset.more) xShow(el); });
+  document.addEventListener('focusout', () => xHide());
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') xHide(); });
+
+  function paint() {
+    xHide();
+    slides.forEach((s, i) => s.classList.toggle('on', i === at));
+    if (num) num.textContent = (at + 1) + ' / ' + slides.length;
+    if (bar) bar.style.width = ((at + 1) / slides.length * 100).toFixed(2) + '%';
+    const s = slides[at];
+    if (s.querySelector('#deg')) Deg.start(); else Deg.stop();
+    Ink.setSlide(at);
+    try { if (('#' + (at + 1)) !== location.hash) history.replaceState(null, '', '#' + (at + 1)); } catch (e) {}
+  }
+  function go(d) {
+    if (slides[at].querySelector('#deg') && Deg.step(d)) return;
+    const next = at + d;
+    if (next < 0 || next > slides.length - 1) return;
+    at = next; paint();
+  }
+  function jump(i) { at = Math.max(0, Math.min(slides.length - 1, i)); paint(); }
+
+  /* Slide list. */
+  const toc = document.getElementById('toc'), tocList = document.getElementById('toc-list'), tocBtn = document.getElementById('nav-toc');
+  slides.forEach((sl, i) => {
+    const say = sl.querySelector('.say'), lab = sl.querySelector('.animlabel span'), course = sl.querySelector('.course');
+    let t = say ? say.textContent.trim() : lab ? lab.textContent.trim() + ' (animation)' : 'Slide ' + (i + 1);
+    if (sl.classList.contains('part') && course && i > 0) t = course.textContent.trim() + ': ' + t;
+    const li = document.createElement('li');
+    li.className = sl.classList.contains('part') ? 'part' : sl.classList.contains('anim') ? 'anim' : '';
+    li.innerHTML = '<button type="button"><span class="n">' + (i + 1) + '</span><span class="t"></span></button>';
+    li.querySelector('.t').textContent = t;
+    li.firstChild.addEventListener('click', () => { jump(i); openToc(false); });
+    tocList.appendChild(li);
+  });
+  function openToc(on){
+    toc.hidden = !on; tocBtn.setAttribute('aria-expanded', on ? 'true' : 'false');
+    if (on) {
+      [...tocList.children].forEach((li, i) => li.classList.toggle('here', i === at));
+      const here = tocList.children[at]; here.scrollIntoView({ block:'center' }); here.firstChild.focus();
+    }
+  }
+  tocBtn.addEventListener('click', () => openToc(toc.hidden));
+  document.getElementById('toc-close').addEventListener('click', () => { openToc(false); tocBtn.focus(); });
+  document.addEventListener('pointerdown', e => { if (!toc.hidden && !e.target.closest('#toc, #nav-toc')) openToc(false); });
+
+  addEventListener('keydown', e => {
+    if (e.metaKey || e.ctrlKey || e.altKey) return;
+    const t = e.target;
+    if (t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable)) return;
+    if (t && t.closest && t.closest('.player')) return;
+    if (!toc.hidden) { if (e.key === 'Escape' || e.key === 't' || e.key === 'T') { e.preventDefault(); openToc(false); tocBtn.focus(); } return; }
+    if (Ink.key(e)) { e.preventDefault(); return; }
+    switch (e.key) {
+      case 'ArrowRight': case 'ArrowDown': case ' ': case 'PageDown':
+        e.preventDefault(); go(1); break;
+      case 'ArrowLeft': case 'ArrowUp': case 'PageUp':
+        e.preventDefault(); go(-1); break;
+      case 'Home': e.preventDefault(); jump(0); break;
+      case 'End':  e.preventDefault(); jump(slides.length - 1); break;
+      case 'b': case 'B': document.body.classList.toggle('blank'); break;
+      case 't': case 'T': e.preventDefault(); openToc(true); break;
+      case 'p': case 'P': if (slides[at].querySelector('#deg')) Deg.toggle(); break;
+    }
+  });
+  /* No click-to-advance: slides move with the keys and the on-screen buttons,
+     so a stray click, a tap on a diagram, or a control never changes slides. */
+  document.getElementById('nav-prev').addEventListener('click', () => go(-1));
+  document.getElementById('nav-next').addEventListener('click', () => go(1));
+  /* Folded rule lists on the conventions slide: opening one closes the others. */
+  document.querySelectorAll('details.rules').forEach(d => d.addEventListener('toggle', () => {
+    if (d.open) document.querySelectorAll('details.rules[open]').forEach(o => { if (o !== d) o.open = false; });
+  }));
+
+  /* ---------- Ink: draw over any slide ----------
+     Pen, highlighter, a laser trail that fades by itself, straight arrows,
+     and an eraser that removes whole strokes. Strokes are stored per slide in
+     viewport fractions, so they stay put when the window resizes. On an
+     animation slide the ink clears each time the animation moves on, unless
+     Keep is on. Pointer Events throughout, so a mouse, a trackpad and a pen
+     all work; a pen that reports pressure gets a varying line. */
+  const Ink = (function(){
+    const cv = document.getElementById('ink'), ctx = cv.getContext('2d');
+    const bar = document.querySelector('.ink-tools'), toast = document.querySelector('.ink-toast');
+    const COL = { ink:'#191919', clay:'#B5583C', val:'#2F6B8A', grn:'#3F6B28' };
+    const NAMES = { ink:'Black', clay:'Clay', val:'Blue', grn:'Green' };
+    let tool = '', color = 'ink', keep = false, slide = 0, cur = null, sm = null, raw = null, laser = [], raf = 0, toastT = 0, edit = null;
+    const TEXT = 34;   /* label size in px at 1600 x 900 */
+    const font = z => (TEXT * z) + 'px "Patrick Hand", "Comic Neue", cursive';
+    let W = 0, H = 0, dpr = 1;
+    const per = new Map();
+    const list = () => { if (!per.has(slide)) per.set(slide, []); return per.get(slide); };
+    const k = () => Math.max(.6, Math.min(W / 1600, H / 900));
+    const pt = e => [e.clientX / W, e.clientY / H, e.pointerType === 'pen' && e.pressure ? e.pressure : .5];
+
+    function size(){
+      dpr = devicePixelRatio || 1; W = innerWidth; H = innerHeight;
+      cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr); redraw();
+    }
+    function trace(P){
+      ctx.beginPath(); ctx.moveTo(P[0][0], P[0][1]);
+      if (P.length < 3) { if (P.length === 1) ctx.lineTo(P[0][0] + .1, P[0][1]); else ctx.lineTo(P[1][0], P[1][1]); return; }
+      for (let i = 1; i < P.length - 1; i++) ctx.quadraticCurveTo(P[i][0], P[i][1], (P[i][0] + P[i + 1][0]) / 2, (P[i][1] + P[i + 1][1]) / 2);
+      ctx.lineTo(P[P.length - 1][0], P[P.length - 1][1]);
+    }
+    function arrowHead(a, b, len){
+      const ang = Math.atan2(b[1] - a[1], b[0] - a[0]);
+      ctx.beginPath();
+      ctx.moveTo(b[0] - len * Math.cos(ang - .45), b[1] - len * Math.sin(ang - .45)); ctx.lineTo(b[0], b[1]);
+      ctx.lineTo(b[0] - len * Math.cos(ang + .45), b[1] - len * Math.sin(ang + .45)); ctx.stroke();
+    }
+    function drawStroke(s){
+      const P = s.p.map(p => [p[0] * W, p[1] * H, p[2]]), z = k();
+      ctx.save(); ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+      if (s.t === 'text') {
+        ctx.font = font(z); ctx.fillStyle = COL[s.c]; ctx.textBaseline = 'top';
+        s.s.split('\n').forEach((line, i) => ctx.fillText(line, P[0][0], P[0][1] + i * TEXT * z * 1.15));
+      } else if (s.t === 'hl') {
+        ctx.globalCompositeOperation = 'multiply'; ctx.strokeStyle = 'rgba(255,220,40,.45)'; ctx.lineWidth = 24 * z;
+        trace(P); ctx.stroke();
+      } else if (s.t === 'arrow') {
+        ctx.strokeStyle = COL[s.c]; ctx.lineWidth = 4 * z; trace(P); ctx.stroke();
+        if (P.length > 1) arrowHead(P[0], P[P.length - 1], 20 * z);
+      } else if (s.pen && P.length > 2) {
+        ctx.strokeStyle = COL[s.c];
+        for (let i = 1; i < P.length; i++) {
+          ctx.lineWidth = 3.6 * z * (.35 + P[i][2] * 1.3);
+          ctx.beginPath(); ctx.moveTo(P[i - 1][0], P[i - 1][1]); ctx.lineTo(P[i][0], P[i][1]); ctx.stroke();
+        }
+      } else {
+        ctx.strokeStyle = COL[s.c]; ctx.lineWidth = 3.6 * z; trace(P); ctx.stroke();
+      }
+      ctx.restore();
+    }
+    function redraw(){
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, W, H);
+      list().forEach(drawStroke);
+      if (cur && cur.p) drawStroke(cur);
+      /* Laser: a glowing trail whose older points fade out. */
+      const now = performance.now(), LIFE = 900;
+      laser = laser.filter(l => now - l.t < LIFE);
+      if (laser.length) {
+        ctx.save(); ctx.lineCap = 'round'; ctx.shadowColor = 'rgba(255,40,40,.85)'; ctx.shadowBlur = 14 * k();
+        for (let i = 1; i < laser.length; i++) {
+          const a = laser[i - 1], b = laser[i]; if (b.brk) continue;
+          ctx.globalAlpha = Math.max(0, 1 - (now - b.t) / LIFE);
+          ctx.strokeStyle = '#FF2A2A'; ctx.lineWidth = 6 * k();
+          ctx.beginPath(); ctx.moveTo(a.x * W, a.y * H); ctx.lineTo(b.x * W, b.y * H); ctx.stroke();
+        }
+        ctx.restore();
+      }
+    }
+    function loop(){ cancelAnimationFrame(raf); const f = () => { redraw(); if (laser.length) raf = requestAnimationFrame(f); }; raf = requestAnimationFrame(f); }
+    function segDist(p, a, b){
+      const dx = b[0] - a[0], dy = b[1] - a[1], L = dx * dx + dy * dy;
+      const t = L ? Math.max(0, Math.min(1, ((p[0] - a[0]) * dx + (p[1] - a[1]) * dy) / L)) : 0;
+      return Math.hypot(p[0] - a[0] - t * dx, p[1] - a[1] - t * dy);
+    }
+    /* The box a text label covers, in pixels. */
+    function textBox(s){
+      const z = k(), lines = s.s.split('\n'); ctx.save(); ctx.font = font(z);
+      const w = Math.max(...lines.map(l => ctx.measureText(l).width)); ctx.restore();
+      return { x:s.p[0][0] * W, y:s.p[0][1] * H, w, h:lines.length * TEXT * z * 1.15 };
+    }
+    const inBox = (q, b, pad) => q[0] > b.x - pad && q[0] < b.x + b.w + pad && q[1] > b.y - pad && q[1] < b.y + b.h + pad;
+    function eraseAt(p){
+      const L = list(), q = [p[0] * W, p[1] * H], r = 14 * k();
+      for (let i = L.length - 1; i >= 0; i--) {
+        if (L[i].t === 'text') { if (inBox(q, textBox(L[i]), r * .5)) L.splice(i, 1); continue; }
+        const P = L[i].p.map(v => [v[0] * W, v[1] * H]);
+        const hit = P.length === 1 ? Math.hypot(q[0] - P[0][0], q[1] - P[0][1]) < r : P.some((v, j) => j && segDist(q, P[j - 1], v) < r);
+        if (hit) L.splice(i, 1);
+      }
+      redraw();
+    }
+
+    /* Text: click to open a box, type, then Enter (or click away) to place it.
+       Shift+Enter starts a new line; Esc places it too. Clicking an existing
+       label opens it again for editing. */
+    function commit(){
+      if (!edit) return;
+      const { el, s } = edit; edit = null;
+      const str = el.innerText.replace(/\n+$/, '');
+      el.remove();
+      if (str.trim()) { s.s = str; list().push(s); }
+      redraw();
+    }
+    function openText(p, old){
+      commit();
+      const z = k(), s = old || { t:'text', c:color, p:[[p[0], p[1]]], s:'' };
+      if (old) { const L = list(); L.splice(L.indexOf(old), 1); redraw(); }
+      const el = document.createElement('div'); el.className = 'ink-edit'; el.contentEditable = 'true'; el.spellcheck = false;
+      el.style.left = (s.p[0][0] * W) + 'px'; el.style.top = (s.p[0][1] * H) + 'px';
+      el.style.font = font(z); el.style.lineHeight = '1.15'; el.style.color = COL[s.c];
+      el.innerText = s.s;
+      el.addEventListener('keydown', ev => {
+        ev.stopPropagation();
+        if ((ev.key === 'Enter' && !ev.shiftKey) || ev.key === 'Escape') { ev.preventDefault(); commit(); }
+      });
+      el.addEventListener('blur', () => { if (edit && edit.el === el) commit(); });
+      document.body.appendChild(el); edit = { el, s };
+      el.focus();
+      const r = document.createRange(); r.selectNodeContents(el); r.collapse(false);
+      const sel = getSelection(); sel.removeAllRanges(); sel.addRange(r);
+    }
+    cv.addEventListener('pointerdown', e => {
+      if (!tool) return;
+      e.preventDefault();
+      const p = pt(e); raw = p;
+      if (tool === 'text') {
+        const q = [p[0] * W, p[1] * H], hit = list().slice().reverse().find(s => s.t === 'text' && inBox(q, textBox(s), 4));
+        if (edit) { commit(); if (!hit) return; }
+        /* Place the box so the click lands mid-line, not at its top edge. */
+        openText([p[0], p[1] - TEXT * k() * .55 / H], hit);
+        return;
+      }
+      /* A lost or synthetic pointer makes capture throw; drawing works without it. */
+      try { cv.setPointerCapture(e.pointerId); } catch (err) {}
+      if (tool === 'erase') { cur = { t:'erase' }; eraseAt(p); return; }
+      if (tool === 'laser') { cur = { t:'laser' }; laser.push({ x:p[0], y:p[1], t:performance.now(), brk:true }); loop(); return; }
+      cur = { t:tool, c:color, p:[p], pen:e.pointerType === 'pen' };
+      if (tool === 'arrow') cur.p.push(p);
+      sm = p; redraw();
+    });
+    cv.addEventListener('pointermove', e => {
+      if (!cur) return;
+      const evs = (e.getCoalescedEvents && e.getCoalescedEvents().length) ? e.getCoalescedEvents() : [e];
+      for (const ev of evs) {
+        const p = pt(ev); raw = p;
+        if (cur.t === 'erase') eraseAt(p);
+        else if (cur.t === 'laser') laser.push({ x:p[0], y:p[1], t:performance.now() });
+        else if (cur.t === 'arrow' || e.shiftKey) { cur.p = [cur.p[0], p]; cur.straight = true; }
+        else { const f = cur.pen ? .6 : .38; sm = [sm[0] + (p[0] - sm[0]) * f, sm[1] + (p[1] - sm[1]) * f, p[2]]; cur.p.push(sm); }
+      }
+      if (cur.t !== 'laser' && cur.t !== 'erase') redraw();
+    });
+    function end(){
+      if (!cur) return;
+      if (cur.p) { if (!cur.straight && cur.t !== 'arrow' && raw) cur.p.push(raw); list().push(cur); }
+      cur = null; sm = null; raw = null; redraw();
+    }
+    cv.addEventListener('pointerup', end);
+    cv.addEventListener('pointercancel', end);
+
+    function say(msg){ toast.textContent = msg; toast.hidden = false; clearTimeout(toastT); toastT = setTimeout(() => { toast.hidden = true; }, 1400); }
+    function setTool(t){
+      if (t !== 'text') commit();
+      tool = t; cur = null;
+      cv.classList.toggle('on', !!t); cv.classList.toggle('erase', t === 'erase'); bar.classList.toggle('live', !!t);
+      bar.querySelectorAll('[data-tool]').forEach(b => b.setAttribute('aria-pressed', b.dataset.tool === t ? 'true' : 'false'));
+    }
+    function setColor(c){
+      color = c;
+      bar.querySelectorAll('[data-color]').forEach(b => b.setAttribute('aria-pressed', b.dataset.color === c ? 'true' : 'false'));
+      if (edit) { edit.s.c = c; edit.el.style.color = COL[c]; edit.el.focus(); return; }
+      if (tool !== 'pen' && tool !== 'arrow' && tool !== 'text') setTool('pen');
+    }
+    function clear(){ if (edit) { edit.el.remove(); edit = null; } list().length = 0; redraw(); }
+    function setKeep(on){ keep = on; bar.querySelector('[data-act="keep"]').setAttribute('aria-pressed', on ? 'true' : 'false'); say(on ? 'Ink stays until you clear it' : 'Ink clears when the animation moves on'); }
+    bar.addEventListener('click', e => {
+      const b = e.target.closest('button'); if (!b) return;
+      if (b.dataset.tool !== undefined) setTool(b.dataset.tool);
+      else if (b.dataset.color) setColor(b.dataset.color);
+      else if (b.dataset.act === 'clear') clear();
+      else if (b.dataset.act === 'keep') setKeep(!keep);
+    });
+    addEventListener('resize', size);
+    size();
+
+    return {
+      setSlide(i){ commit(); slide = i; cur = null; redraw(); },
+      /* Called by an animation each time it moves on. */
+      beat(){ if (!keep && list().length) clear(); },
+      key(e){
+        const c = e.key.length === 1 ? e.key.toLowerCase() : e.key;
+        const map = { d:'pen', h:'hl', l:'laser', a:'arrow', e:'erase', w:'text' };
+        if (map[c]) { setTool(tool === map[c] ? '' : map[c]); return true; }
+        if (c === 'Escape' && tool) { setTool(''); return true; }
+        if (c === 'c') { clear(); return true; }
+        if (c === 'k') { setKeep(!keep); return true; }
+        const n = { '1':'ink', '2':'clay', '3':'val', '4':'grn' }[c];
+        if (n) { setColor(n); say(NAMES[n]); return true; }
+        return false;
+      }
+    };
+  })();
+
+  /* ---------- Player: shared controls for every animation ----------
+     An animation hands over its beats, how long each runs at 1×, how to show
+     a beat (fast = state only, no motion), how to reset, and its stopping
+     points. The player owns time: play and pause, autoplay or stop at each
+     stop, speed, seeking on a segmented bar, and the deck's arrow keys while
+     autoplay is off. */
+  const ICON = {
+    first:'<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6 5.5h2.2v13H6zM18.5 6.6v10.8a1 1 0 0 1-1.55.83L9.6 13.03a1.2 1.2 0 0 1 0-2.06l7.35-5.2a1 1 0 0 1 1.55.83z"/></svg>',
+    last:'<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M15.8 5.5H18v13h-2.2zM5.5 6.6v10.8a1 1 0 0 0 1.55.83l7.35-5.2a1.2 1.2 0 0 0 0-2.06L7.05 5.77A1 1 0 0 0 5.5 6.6z"/></svg>',
+    prev:'<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M14.5 6.5 9 12l5.5 5.5"/></svg>',
+    next:'<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M9.5 6.5 15 12l-5.5 5.5"/></svg>',
+    play:'<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M8.5 5.9v12.2a1 1 0 0 0 1.52.85l9.6-6.1a1 1 0 0 0 0-1.7l-9.6-6.1A1 1 0 0 0 8.5 5.9z"/></svg>',
+    pause:'<svg viewBox="0 0 24 24" aria-hidden="true"><rect fill="currentColor" x="6.5" y="5.5" width="4" height="13" rx="1.2"/><rect fill="currentColor" x="13.5" y="5.5" width="4" height="13" rx="1.2"/></svg>',
+    auto:'<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M17 3.5 20.5 7 17 10.5M3.5 11.5V10a3 3 0 0 1 3-3h14M7 20.5 3.5 17 7 13.5M20.5 12.5V14a3 3 0 0 1-3 3h-14"/></svg>'
+  };
+  function Player(cfg){
+    const S = cfg.steps, el = cfg.el, cap = cfg.cap;
+    /* The shown speed runs 0.5x to 4x. 1x plays at half the authored rate, so
+       beat durations stay as written and the default is calmer. */
+    const RATE = 0.75;
+    const cum = [0]; S.forEach(s => cum.push(cum[cum.length - 1] + cfg.dur(s)));
+    const TOTAL = cum[S.length];
+    const stops = cfg.stops.slice().sort((a, b) => a.k - b.k);
+    if (!stops.length || stops[0].k > 0) stops.unshift({ k:0, label:'Start', text:'' });
+    const stopAt = new Set(stops.map(s => s.k));
+    const isStop = k => k >= S.length || stopAt.has(k);
+    const lastStop = stops[stops.length - 1].k;
+    const fmt = ms => { const t = Math.floor(ms / 1000); return Math.floor(t / 60) + ':' + String(t % 60).padStart(2, '0'); };
+
+    el.innerHTML =
+      '<div class="ptp">' +
+        '<button type="button" data-a="first" title="Beginning" aria-label="Go to the beginning">' + ICON.first + '</button>' +
+        '<button type="button" data-a="prev" title="Previous" aria-label="Previous stop">' + ICON.prev + '</button>' +
+        '<button type="button" data-a="pp" class="ppb" title="Pause" aria-label="Pause"><span class="i-pause">' + ICON.pause + '</span><span class="i-play">' + ICON.play + '</span></button>' +
+        '<button type="button" data-a="next" title="Next" aria-label="Next stop">' + ICON.next + '</button>' +
+        '<button type="button" data-a="last" title="End" aria-label="Go to the end">' + ICON.last + '</button>' +
+      '</div>' +
+      '<div class="pbar" role="slider" tabindex="0" aria-label="Animation position" aria-valuemin="0" aria-valuemax="' + TOTAL + '">' +
+        '<div class="psegs"></div><div class="pknob"></div><div class="ptip" hidden></div>' +
+      '</div>' +
+      '<span class="ptime">0:00 / ' + fmt(TOTAL / RATE) + '</span>' +
+      '<div class="pspeed"><button type="button" class="pchip" aria-haspopup="true" aria-expanded="false" title="Speed">1×</button>' +
+        '<div class="ppop" hidden><span class="pv">1.00×</span><input type="range" min="0.5" max="4" step="0.05" value="1" aria-label="Playback speed"><span class="pmin">0.5×</span></div></div>' +
+      '<button type="button" class="pauto" aria-pressed="true" title="Autoplay on: plays straight through" aria-label="Autoplay">' + ICON.auto + '</button>';
+    const q = s => el.querySelector(s);
+    const pp = q('[data-a="pp"]'), bar = q('.pbar'), segsEl = q('.psegs'), knob = q('.pknob'), tip = q('.ptip'), timeEl = q('.ptime');
+    const chip = q('.pchip'), pop = q('.ppop'), range = q('.ppop input'), pv = q('.pv'), autoBtn = q('.pauto');
+
+    /* One segment per stretch between stops, with a gap at each stop. */
+    const segs = stops.map((st, i) => {
+      const a = cum[st.k], b = i + 1 < stops.length ? cum[stops[i + 1].k] : TOTAL;
+      const d = document.createElement('div');
+      d.className = 'pseg' + (st.accent ? ' accent' : '') + (st.quiet ? ' quiet' : '');
+      d.style.left = (a / TOTAL * 100) + '%'; d.style.width = ((b - a) / TOTAL * 100) + '%';
+      d.innerHTML = '<i></i>';
+      segsEl.appendChild(d);
+      return { a, b, st, fill:d.firstChild, el:d };
+    });
+
+    let cur = -1, playing = false, held = false, skipHold = false, auto = true;
+    /* A beat with more text gets an i button after its caption. Opening it
+       pauses; closing a hover-opened box resumes. A click pins it open. */
+    const moreBox = document.createElement('div');
+    moreBox.className = 'pmorebox'; moreBox.hidden = true; moreBox.setAttribute('role', 'note');
+    moreBox.innerHTML = '<span></span><button type="button" aria-label="Close">×</button>';
+    if (cap) cap.parentNode.appendChild(moreBox);
+    let moreOpen = false, morePinned = false, moreResume = false, moreBtn = null;
+    function openMore(s, pin){
+      moreBox.firstChild.textContent = s.more; moreBox.hidden = false;
+      if (moreBtn) moreBtn.setAttribute('aria-expanded', 'true');
+      if (!moreOpen) { moreResume = playing; if (playing) setPlaying(false); }
+      moreOpen = true; morePinned = morePinned || pin;
+    }
+    function closeMore(resume){
+      if (!moreOpen) return;
+      moreBox.hidden = true; moreOpen = false; morePinned = false;
+      if (moreBtn) moreBtn.setAttribute('aria-expanded', 'false');
+      if (resume && moreResume) setPlaying(true);
+    }
+    function show(s, fast){
+      closeMore(false);
+      cfg.apply(s, fast);
+      if (!cap || !s.more) { moreBtn = null; return; }
+      const b = document.createElement('button');
+      b.type = 'button'; b.className = 'pmore'; b.textContent = 'i';
+      b.setAttribute('aria-label', 'More about this step'); b.setAttribute('aria-expanded', 'false');
+      b.addEventListener('pointerenter', e => { if (e.pointerType === 'mouse') openMore(s, false); });
+      b.addEventListener('click', e => { e.stopPropagation(); if (moreOpen && morePinned) closeMore(true); else openMore(s, true); });
+      cap.appendChild(b); moreBtn = b;
+    }
+    if (cap) {
+      cap.parentNode.addEventListener('pointerleave', e => { if (e.pointerType === 'mouse' && moreOpen && !morePinned) closeMore(true); });
+      moreBox.lastChild.addEventListener('click', e => { e.stopPropagation(); closeMore(true); });
+      document.addEventListener('keydown', e => { if (e.key === 'Escape' && moreOpen) closeMore(true); });
+      document.addEventListener('pointerdown', e => { if (moreOpen && !e.target.closest('.pmorebox, .pmore')) closeMore(true); });
+    }
+    let pausedPos = 0, beatStart = 0, sp = RATE, timer = null;
+
+    function pos(){
+      if (!playing || cur < 0) return pausedPos;
+      return Math.min(cum[cur + 1], cum[cur] + (performance.now() - beatStart) * sp);
+    }
+    function label(){
+      pp.classList.toggle('playing', playing);
+      const t = playing ? 'Pause' : held ? (cur >= S.length - 1 ? 'Start over' : 'Play the next part') : 'Play';
+      pp.title = t; pp.setAttribute('aria-label', t);
+    }
+    function doReset(){ cfg.halt(); cfg.reset(); cur = -1; }
+    function schedule(ms){ clearTimeout(timer); timer = setTimeout(next, ms / sp); }
+    function hold(){ playing = false; held = true; clearTimeout(timer); pausedPos = cur < 0 ? 0 : cum[cur + 1] - 1; label(); }
+    function next(){
+      if (!playing) return;
+      if (!auto && cur >= 0 && isStop(cur + 1) && !skipHold) { hold(); return; }
+      skipHold = false;
+      cur++;
+      if (cur >= S.length) { doReset(); cur = 0; }
+      show(S[cur], false);
+      beatStart = performance.now();
+      schedule(cfg.dur(S[cur]));
+    }
+    function setPlaying(on){
+      if (!on && playing) pausedPos = pos();
+      if (on && held) skipHold = true;
+      held = false;
+      playing = on; clearTimeout(timer);
+      if (!on) cfg.halt();
+      label();
+      if (!on) return;
+      if (cur < 0 || pausedPos >= TOTAL || (cur >= S.length - 1 && skipHold)) { if (cur >= 0) doReset(); skipHold = false; next(); return; }
+      const done = pausedPos - cum[cur];
+      beatStart = performance.now() - done / sp;
+      schedule(cfg.dur(S[cur]) - done);
+    }
+    function seek(ms){
+      held = false;
+      ms = Math.max(0, Math.min(TOTAL - 1, ms));
+      clearTimeout(timer);
+      doReset();
+      let k = 0; while (k < S.length - 1 && cum[k + 1] <= ms) k++;
+      for (let j = 0; j < k; j++) cfg.apply(S[j], true);
+      show(S[k], true);
+      cur = k; pausedPos = ms;
+      label();
+      if (playing) { beatStart = performance.now() - (ms - cum[k]) / sp; schedule(cfg.dur(S[k]) - (ms - cum[k])); }
+    }
+    /* Hold just before beat k, with everything up to it already shown. */
+    function holdBefore(k){
+      setPlaying(false);
+      if (k <= 0) { doReset(); pausedPos = 0; if (cap) cap.innerHTML = '<span class="n">Ready</span>Press → or ▶ to play the first part.'; }
+      else seek(cum[k] - 1);
+      cur = k - 1; held = true; label();
+    }
+    function jumpTo(k){
+      const was = playing;
+      if (!auto) { holdBefore(k); return; }
+      setPlaying(false);
+      /* Paused, land on stop k with its beat shown, so the next press moves on.
+         Playing, land just before it so the beat animates in. */
+      if (k <= 0) { doReset(); pausedPos = 0; } else seek(was ? cum[k] - 1 : cum[k]);
+      if (was) setPlaying(true);
+    }
+    function stopBefore(i){ return stops.filter(s => s.k <= i).pop().k; }
+    function stepNav(d){
+      if (d > 0) {
+        if (held && cur >= S.length - 1) return false;
+        if (held) { setPlaying(true); return true; }
+        let k = cur + 1; while (!isStop(k)) k++;
+        if (k >= S.length) return false;
+        jumpTo(k); return true;
+      }
+      const at = pos();
+      let k = stopBefore(Math.max(0, cur));
+      if (at - cum[k] < 1500 || (held && cur + 1 === k)) { if (k === 0) return false; k = stopBefore(k - 1); }
+      jumpTo(k); return true;
+    }
+    function first(){ if (!auto) holdBefore(0); else { setPlaying(false); doReset(); pausedPos = 0; setPlaying(true); } }
+    function last(){
+      const was = playing;
+      setPlaying(false); seek(cum[lastStop]);
+      if (!auto) { cur = S.length - 1; held = true; label(); }
+      else if (was) setPlaying(true);
+    }
+    function setSpeed(v){
+      const p = pos();
+      const vs = Math.max(.5, Math.min(4, Math.round(v * 20) / 20));
+      sp = vs * RATE;
+      range.value = vs; pv.textContent = vs.toFixed(2) + '×';
+      chip.textContent = (vs === 1 ? '1' : String(+vs.toFixed(2))) + '×';
+      cfg.onSpeed(sp);
+      if (playing && cur >= 0) { beatStart = performance.now() - (p - cum[cur]) / sp; schedule(cfg.dur(S[cur]) - (p - cum[cur])); }
+    }
+    function setAuto(on){
+      auto = on;
+      autoBtn.setAttribute('aria-pressed', on ? 'true' : 'false');
+      autoBtn.title = on ? 'Autoplay on: plays straight through' : 'Autoplay off: stops at each gap in the bar';
+      if (on && held) setPlaying(true);
+    }
+
+    /* Buttons. */
+    el.querySelector('.ptp').addEventListener('click', e => {
+      const b = e.target.closest('button'); if (!b) return;
+      ({ first, last, prev:() => stepNav(-1), next:() => stepNav(1), pp:() => setPlaying(!playing) })[b.dataset.a]();
+    });
+    autoBtn.addEventListener('click', () => setAuto(!auto));
+
+    /* Speed: a chip that opens a vertical slider. The wheel over the chip nudges it. */
+    const openPop = on => { pop.hidden = !on; chip.setAttribute('aria-expanded', on ? 'true' : 'false'); if (on) range.focus(); };
+    chip.addEventListener('click', () => openPop(pop.hidden));
+    chip.addEventListener('wheel', e => { e.preventDefault(); setSpeed(sp / RATE + (e.deltaY < 0 ? .05 : -.05)); }, { passive:false });
+    range.addEventListener('input', () => setSpeed(+range.value));
+    range.addEventListener('keydown', e => { if (e.key === 'Escape') { openPop(false); chip.focus(); } });
+    document.addEventListener('pointerdown', e => { if (!pop.hidden && !e.target.closest('.pspeed')) openPop(false); });
+
+    /* The bar: click or drag to seek, hover for the stop's label and time. */
+    const msAt = x => { const r = bar.getBoundingClientRect(); return Math.max(0, Math.min(1, (x - r.left) / r.width)) * TOTAL; };
+    let drag = false, wasPlaying = false;
+    function showTip(x){
+      const ms = msAt(x), r = bar.getBoundingClientRect();
+      const sg = segs.find(s => ms >= s.a && ms < s.b) || segs[segs.length - 1];
+      segs.forEach(s => s.el.classList.toggle('hot', s === sg));
+      tip.textContent = sg.st.label + (sg.st.text ? ' · ' + sg.st.text : '') + ' · ' + fmt(ms / RATE);
+      tip.hidden = false;
+      const w = tip.offsetWidth, left = Math.max(w / 2, Math.min(r.width - w / 2, x - r.left));
+      tip.style.left = left + 'px';
+    }
+    bar.addEventListener('pointerdown', e => {
+      drag = true; bar.setPointerCapture(e.pointerId);
+      wasPlaying = playing; if (playing) setPlaying(false);
+      seek(msAt(e.clientX)); showTip(e.clientX);
+    });
+    bar.addEventListener('pointermove', e => { showTip(e.clientX); if (drag) seek(msAt(e.clientX)); });
+    bar.addEventListener('pointerup', () => { drag = false; if (wasPlaying) setPlaying(true); });
+    bar.addEventListener('pointerleave', () => { if (!drag) { tip.hidden = true; segs.forEach(s => s.el.classList.remove('hot')); } });
+    bar.addEventListener('keydown', e => {
+      const step = { ArrowLeft:-5000, ArrowRight:5000, ArrowDown:-5000, ArrowUp:5000 }[e.key];
+      if (step === undefined && e.key !== 'Home' && e.key !== 'End') return;
+      e.preventDefault(); e.stopPropagation();
+      const was = playing; setPlaying(false);
+      seek(e.key === 'Home' ? 0 : e.key === 'End' ? TOTAL - 1 : pos() + step);
+      if (was) setPlaying(true);
+    });
+
+    (function frame(){
+      const p = pos();
+      segs.forEach(s => { s.fill.style.width = (Math.max(0, Math.min(1, (p - s.a) / (s.b - s.a))) * 100) + '%'; });
+      knob.style.left = (p / TOTAL * 100) + '%';
+      bar.setAttribute('aria-valuenow', Math.round(p));
+      bar.setAttribute('aria-valuetext', fmt(p) + ' of ' + fmt(TOTAL));
+      timeEl.textContent = fmt(p / RATE) + ' / ' + fmt(TOTAL / RATE);
+      requestAnimationFrame(frame);
+    })();
+
+    label();
+    cfg.onSpeed(sp);
+    return {
+      start(){
+        if (cfg.reduce) { doReset(); S.forEach((s, j) => j < S.length - 1 ? cfg.apply(s, true) : show(s, true)); cur = S.length - 1; pausedPos = TOTAL; setPlaying(false); return; }
+        if (!auto) { holdBefore(0); return; }
+        setPlaying(false); doReset(); pausedPos = 0; setPlaying(true);
+      },
+      stop(){ closeMore(false); setPlaying(false); held = false; cfg.leave(); openPop(false); },
+      toggle(){ setPlaying(!playing); },
+      step(d){ return !auto && stepNav(d); }
+    };
+  }
+
+
+  /* ---------- Two degrees ----------
+     Dots stream from Students through the degree boxes to where graduates go.
+     Before the split every dot passes through Computer Science; after it,
+     research dots take CS / ML and the rest take AI Software Engineering.
+     The beat index sets classes p0..pN on the stage; CSS moves the boxes. */
+  const Deg = (function(){
+    const root = document.getElementById('deg');
+    if (!root) return { start(){}, stop(){}, toggle(){}, step(){ return false; } };
+    const $ = id => document.getElementById(id);
+    const cap = $('deg-cap'), cv = $('deg-fx'), ctx = cv.getContext('2d');
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const RES_SHARE = 0.08;          /* illustrative, from the 5-10% estimate */
+    const C = { ml:'#2F6B8A', se:'#B5583C', dim:'rgba(102,102,99,.16)' };
+    let sp = 1, phase = -1, dots = [], resN = 0, indN = 0, raf = 0, last = 0, spawnAcc = 0, live = false;
+
+    const S = [
+      { m:'Today', d:5200, cap:'Today, every student goes through one Computer Science degree.',
+        more:'Same requirements for everyone, whether they head to a software job or to graduate school.' },
+      { d:6400, cap:'Most graduates go to industry software jobs. About 5–10% go to grad school or research (our estimate).',
+        more:'For about a decade the degree has worked as a service degree. The percentages here are illustrative, based on our 5–10% estimate.' },
+      { m:'Split', d:5200, cap:'Make it explicit: split CS into two degrees, one for each path.' },
+      { d:5600, cap:'CS / ML: math, theory and machine learning, for students headed to research.',
+        more:'Less hand-written programming, since AI tools now do much of it. Possible tracks include ML, LLMs and maybe quantum computing.' },
+      { d:5600, cap:'AI Software Engineering: building production software with AI, for students headed to industry.',
+        more:'The content areas come from what students missed in the 2026-10-19 demos: where state lives, usability, finishing details and testing.' },
+      { m:'Why', d:5600, cap:'Research faculty get a more research-focused CS degree, and teach closer to their research.' },
+      { d:5600, cap:'The service degree brings in most of the students. Enrollment is expected to drop further in 2027–28.' },
+      { m:'Ask', d:7000, cap:'To build either degree, the first question is: how many hours will each of us commit?' }
+    ];
+    const LABEL = { Today:'Today', Split:'The split', Why:'Why', Ask:'The question' };
+
+    /* Geometry: node centres and edges in canvas pixels. */
+    let W = 0, H = 0, dpr = 1;
+    function size(){
+      const r = root.getBoundingClientRect();
+      dpr = Math.min(2, devicePixelRatio || 1);
+      W = r.width; H = r.height;
+      cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+    function pt(sel, side){
+      const el = root.querySelector(sel), r = el.getBoundingClientRect(), o = root.getBoundingClientRect();
+      const x = side === 'l' ? r.left - o.left : side === 'r' ? r.right - o.left : r.left - o.left + r.width / 2;
+      return { x, y:r.top - o.top + r.height / 2 };
+    }
+    /* Each route: start, hub in, hub out, end. Read live, so the paths follow the boxes as they move. */
+    function route(kind, split){
+      const hub = split ? (kind === 'res' ? '.ml' : '.se') : '.cs';
+      return [pt('.src .ring', 'r'), pt(hub, 'l'), pt(hub, 'r'), pt(kind === 'res' ? '.res' : '.ind', 'l')];
+    }
+    function bez(a, b, t, j){
+      const mx = (a.x + b.x) / 2;
+      const c1 = { x:mx, y:a.y + j }, c2 = { x:mx, y:b.y + j };
+      const u = 1 - t;
+      return { x:u*u*u*a.x + 3*u*u*t*c1.x + 3*u*t*t*c2.x + t*t*t*b.x,
+               y:u*u*u*a.y + 3*u*u*t*c1.y + 3*u*t*t*c2.y + t*t*t*b.y };
+    }
+    function where(d, split){
+      const R = route(d.kind, split), t = d.t;
+      if (t < 0.45) return bez(R[0], R[1], t / 0.45, d.j);
+      if (t < 0.55) { const k = (t - 0.45) / 0.1; return { x:R[1].x + (R[2].x - R[1].x) * k, y:R[1].y + (R[2].y - R[1].y) * k + d.j * 0.3 }; }
+      return bez(R[2], R[3], (t - 0.55) / 0.45, d.j);
+    }
+    function drawRoutes(split){
+      ctx.lineWidth = 2; ctx.setLineDash([2, 7]); ctx.lineCap = 'round';
+      ['res', 'ind'].forEach(kind => {
+        const R = route(kind, split);
+        ctx.strokeStyle = kind === 'res' ? 'rgba(47,107,138,.28)' : 'rgba(181,88,60,.28)';
+        [[R[0], R[1]], [R[2], R[3]]].forEach(([a, b]) => {
+          ctx.beginPath();
+          for (let i = 0; i <= 24; i++) { const p = bez(a, b, i / 24, 0); i ? ctx.lineTo(p.x, p.y) : ctx.moveTo(p.x, p.y); }
+          ctx.stroke();
+        });
+      });
+      ctx.setLineDash([]);
+    }
+    function spawn(){
+      const kind = Math.random() < RES_SHARE ? 'res' : 'ind';
+      dots.push({ kind, t:0, j:(Math.random() - 0.5) * H * 0.07, v:0.22 + Math.random() * 0.06, r:2.6 + Math.random() * 1.6 });
+    }
+    function setPct(){
+      const n = resN + indN;
+      $('deg-res').textContent = Math.round(resN / n * 100) + '%';
+      $('deg-ind').textContent = Math.round(indN / n * 100) + '%';
+    }
+    function frame(now){
+      if (!live) return;
+      const dt = Math.min(0.05, (now - (last || now)) / 1000) * sp * 0.75; last = now;
+      if (W !== root.clientWidth) size();
+      const split = phase >= 2;
+      const rate = phase >= 6 ? 13 : 8;            /* dots per second at 1x */
+      spawnAcc += dt * rate;
+      while (spawnAcc >= 1) { spawn(); spawnAcc -= 1; }
+      ctx.clearRect(0, 0, W, H);
+      drawRoutes(split);
+      dots = dots.filter(d => {
+        d.t += dt * d.v;
+        if (d.t >= 1) { if (d.kind === 'res') resN++; else indN++; if (phase >= 1) setPct(); return false; }
+        const p = where(d, split), fade = Math.min(1, d.t * 8, (1 - d.t) * 8);
+        ctx.globalAlpha = fade;
+        ctx.fillStyle = d.kind === 'res' ? C.ml : C.se;
+        ctx.beginPath(); ctx.arc(p.x, p.y, d.r, 0, Math.PI * 2); ctx.fill();
+        return true;
+      });
+      ctx.globalAlpha = 1;
+      raf = requestAnimationFrame(frame);
+    }
+    function fxOn(){
+      size();
+      if (reduce) { ctx.clearRect(0, 0, W, H); drawRoutes(phase >= 2); return; }
+      if (live) return;
+      live = true; last = 0;
+      for (let i = 0; i < 26; i++) { spawn(); dots[dots.length - 1].t = Math.random() * 0.95; }
+      raf = requestAnimationFrame(frame);
+    }
+    function fxOff(){ live = false; cancelAnimationFrame(raf); }
+    addEventListener('resize', () => { if (live || reduce) size(); });
+
+    function setPhase(k, fast){
+      phase = k;
+      if (fast) root.classList.add('fast');
+      for (let i = 0; i < S.length; i++) root.classList.toggle('p' + i, i <= k);
+      if (fast) { void root.offsetWidth; requestAnimationFrame(() => root.classList.remove('fast')); }
+      if (reduce) { size(); ctx.clearRect(0, 0, W, H); drawRoutes(k >= 2); }
+    }
+    function apply(s, fast){
+      if (!fast) Ink.beat();
+      const k = S.indexOf(s);
+      const label = S.slice(0, k + 1).reduce((m, x) => x.m || m, 'Today');
+      cap.innerHTML = '<span class="n">' + LABEL[label] + '</span>' + s.cap;
+      setPhase(k, fast);
+    }
+    function reset(){
+      Ink.beat();
+      resN = 8; indN = 92; setPct();
+      setPhase(-1, true);
+    }
+    reset();
+
+    const NOTE = { Today:'where students go now', Split:'one degree becomes two', Why:'what each side gains', Ask:'the hours question' };
+    const P = Player({
+      el:$('deg-player'), cap, steps:S, dur:s => s.d, reduce, apply, reset,
+      stops:S.map((x, k) => x.m ? { k, label:LABEL[x.m], text:NOTE[x.m], accent:x.m === 'Ask' } : null).filter(Boolean),
+      onSpeed:v => { sp = v; },
+      halt:() => {},
+      leave:() => {}
+    });
+    return {
+      start(){ fxOn(); P.start(); },
+      stop(){ P.stop(); fxOff(); },
+      toggle(){ P.toggle(); },
+      step(d){ return P.step(d); }
+    };
+  })();
+
+  const start = parseInt((location.hash || '').slice(1), 10);
+  jump(Number.isFinite(start) && start > 0 ? start - 1 : 0);
+})();
+</script>
