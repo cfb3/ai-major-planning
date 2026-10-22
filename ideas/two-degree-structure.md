@@ -32,6 +32,8 @@ Split the CS program into two degrees that match what students actually do:
   today) is a likely early course. See [tcss-461-description-update.md](tcss-461-description-update.md).
 - First step: a single slide of the two-degree shape for the 2026-10-23 CS colleagues meeting,
   paired with asking how many hours each faculty member will commit.
+  [Animated slide](https://claude.ai/artifact/Dr2d38Yt3vhutZ4DXURyDS) (claude.ai, private to
+  Charles until shared).
 
 ## Open questions / risks
 
