@@ -1,0 +1,48 @@
+# Status
+
+The current picture, kept short. Update this whenever something changes. Last updated 2026-10-22.
+
+## People
+
+| Name | Handles | Notes |
+| --- | --- | --- |
+| Charles | cfb3 (GitHub) | Co-lead |
+| Chris | algorithm0r (Discord) | Co-lead |
+
+Colleagues mentioned: **Josh** and **Raghavi** (possible UI/UX guest session); **Josh's labor
+course** (Chris would teach it, as a candidate course).
+
+## Where we talk
+
+- **Discord:** Charles ↔ Chris discussion
+- **Slack:** agents
+- **This repo:** where Claude's work lands; the shared record for both humans and agents
+
+## Where things stand
+
+- **Stage:** Early brainstorming.
+- **Working name:** AI / Software Development (AI/SWD).
+- **Big open question:** major or certificate/minor? Charles leans toward a ~6-course
+  certificate or minor; Chris wants to build toward a major. See
+  [open-questions.md](open-questions.md).
+- **Evidence so far:** student demos from 2026-10-19. See
+  [ideas/observed-gaps-from-student-demos.md](ideas/observed-gaps-from-student-demos.md).
+- **Draft structure:** [ideas/curriculum-skeleton.md](ideas/curriculum-skeleton.md).
+- **Near-term move:** Charles proposes teaching the AI SWD course (currently TCSS 490) as
+  TCSS 461, with a more general description, ABET design elective status, and a $75 course fee.
+  Going to the next CSS curriculum meeting (date not set). See
+  [ideas/tcss-461-description-update.md](ideas/tcss-461-description-update.md).
+
+## Coming up
+
+| When | What |
+| --- | --- |
+| Fri 2026-10-23, 11:00 | Charles + Chris prep: put together an AI/SWD major plan |
+| Fri 2026-10-23, 12:30 | CS colleagues meeting ([agenda](meetings/2026-10-23-cs-colleagues.md)) |
+
+## Before Friday
+
+- [ ] List "the majors on the table"
+- [ ] Fill in attendees and what we want from colleagues in the agenda
+- [ ] Chris: prepare the 5-minute demo
+- [ ] Charles: prepare the 5-minute gaps talk

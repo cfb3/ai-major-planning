@@ -11,6 +11,21 @@ Content is Markdown: ideas, research notes, meeting agendas, open questions, and
 Audience for most documents: CS faculty colleagues and, later, curriculum committees and
 administrators. Write for smart readers who are not yet bought in.
 
+## Start here
+
+Read [`STATUS.md`](STATUS.md) first: where things stand, who's who, and what's coming up.
+
+## Shared context lives in the repo, not in agent memory
+
+Charles and Chris each work with their own Claude sessions and agents. A personal or local agent
+memory store (e.g. Claude Code's auto-memory) is invisible to the other person. So:
+
+- Anything about the project that the other collaborator or their agents need belongs in this
+  repo: `STATUS.md`, `decisions.md`, `open-questions.md`, `meetings/`, `ideas/`.
+- When you learn something durable about the project (a date, a name, a decision, a change in
+  direction), update `STATUS.md` or the right file **instead of** saving it to private memory.
+- Private memory is only for the individual user's personal preferences.
+
 ## Two contributors
 
 Charles and Chris both contribute. Don't assume an idea belongs to whoever is in the current

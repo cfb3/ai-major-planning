@@ -23,6 +23,7 @@ Choosing among these is one of the first things to settle (see
 
 | Path | What goes there |
 | --- | --- |
+| [`STATUS.md`](STATUS.md) | **Start here.** Who's who, where things stand, what's next. |
 | [`ideas/`](ideas/) | One file per idea: a course, a track, a theme, a pedagogical approach. Start from [`ideas/_template.md`](ideas/_template.md). |
 | [`research/`](research/) | Peer programs, industry input, accreditation and institutional notes. |
 | [`meetings/`](meetings/) | Agendas and notes, one file per meeting, named `YYYY-MM-DD-topic.md`. |
@@ -41,5 +42,11 @@ Choosing among these is one of the first things to settle (see
 
 ## Upcoming
 
-- **Fri 2026-10-23:** Meeting with CS colleagues. See
+- **Fri 2026-10-23, 11:00:** Charles and Chris prep session.
+- **Fri 2026-10-23, 12:30:** Meeting with CS colleagues. See
   [`meetings/2026-10-23-cs-colleagues.md`](meetings/2026-10-23-cs-colleagues.md).
+
+## Latest
+
+- **2026-10-20:** [Discord debrief on the student demos](meetings/2026-10-20-discord-debrief.md):
+  observed gaps, a first curriculum skeleton, and the major-vs-certificate question.
