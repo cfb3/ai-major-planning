@@ -53,13 +53,15 @@ already fits the course.
 
 ## How it might work
 
-- Charles brings the proposed description to the next CSS curriculum meeting.
+- Charles circulates the proposed description to faculty in advance, then brings it to the next
+  CS faculty meeting (about a week after 2026-10-22) for a vote.
 - Pitch: no change in scope. The edits remove a product name and a dated term and generalize one
   technique.
 - If approved, the course is offered as TCSS 461 instead of 490. Prerequisite stays TCSS 360.
 - Charles will also propose, at the same meeting:
   - **ABET design elective:** count TCSS 461 as a design elective (the description already
-    centers on system design and architecture). A design elective needs a design project for
+    centers on system design and architecture), so it can meet the graduation requirement
+    TCSS 460 meets now. A design elective needs a design project for
     most of the quarter; the course's moonshot project meets that, and the course will do the
     ABET assessment work.
   - **$75 course fee:** to pay for a Claude Team account for each student in the course.

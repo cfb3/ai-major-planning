@@ -16,6 +16,23 @@
 - **How does it relate to existing CS degrees?** Complement, alternative, or overlap? Which
   skeleton areas are already taught?
 
+- **Two degrees?** Should CS split into a research CS/ML degree and a service AI Software
+  Engineering degree? Charles and Chris are considering it as of 2026-10-22. See
+  [two-degree-structure.md](ideas/two-degree-structure.md). If so, the service side looks like a
+  major, not a certificate.
+- **Can anything be ready this academic year?**
+
+## Faculty
+
+- **How much faculty time is there?** Ask each colleague how many hours they'll commit. If the
+  total is too low, a full overhaul isn't viable. Raise on 2026-10-23.
+
+## Course logistics
+
+- **How many times can TCSS 490 be offered before it has to become a named course?**
+- **Is TCSS 461 already a design elective?** Not confirmed as of 2026-10-22. Either way, Charles
+  plans to ask for a vote.
+
 ## Evidence
 
 - **What else are students missing** beyond the four gaps in

@@ -28,6 +28,12 @@ course** (Chris would teach it, as a candidate course).
 - **Evidence so far:** student demos from 2026-10-19. See
   [ideas/observed-gaps-from-student-demos.md](ideas/observed-gaps-from-student-demos.md).
 - **Draft structure:** [ideas/curriculum-skeleton.md](ideas/curriculum-skeleton.md).
+- **Bigger picture (2026-10-22):** Charles and Chris are considering splitting CS into a research
+  CS/ML degree and a service AI Software Engineering degree. See
+  [ideas/two-degree-structure.md](ideas/two-degree-structure.md).
+- **Near-term course:** TCSS 460 is cancelled for winter and spring; TCSS 490 runs in spring
+  instead, maybe as a double section. Plan to move it permanently under TCSS 461. See
+  [ideas/tcss-461-description-update.md](ideas/tcss-461-description-update.md).
 - **Near-term move:** Charles proposes teaching the AI SWD course (currently TCSS 490) as
   TCSS 461, with a more general description, ABET design elective status, and a $75 course fee.
   Going to the next CSS curriculum meeting (date not set). See
@@ -39,6 +45,7 @@ course** (Chris would teach it, as a candidate course).
 | --- | --- |
 | Fri 2026-10-23, 11:00 | Charles + Chris prep: put together an AI/SWD major plan |
 | Fri 2026-10-23, 12:30 | CS colleagues meeting ([agenda](meetings/2026-10-23-cs-colleagues.md)) |
+| ~2026-10-29 (about a week out; date not confirmed) | CS faculty meeting: Charles moves to adopt the new TCSS 461 description, make 461 a design elective, add a $75 course fee |
 
 ## Before Friday
 
@@ -46,3 +53,5 @@ course** (Chris would teach it, as a candidate course).
 - [ ] Fill in attendees and what we want from colleagues in the agenda
 - [ ] Chris: prepare the 5-minute demo
 - [ ] Charles: prepare the 5-minute gaps talk
+- [ ] Charles: one slide showing the two-degree structure
+- [ ] Charles: ask each colleague how many hours they'll commit
