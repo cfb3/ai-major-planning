@@ -10,7 +10,8 @@
 Charles and Chris refined the service side into a **B.A. in Artificial Intelligence**, made by
 reshaping the existing B.A. or creating a new one (open); the **B.S. stays the research and grad-school track**, with
 possible tracks such as AI/ML, quantum computing, and others. The B.A. is
-practice-oriented ("creating with AI") and aimed at the AI-capable workforce, not traditional
+practice-oriented ("creating with AI") and produces expert AI managers for the AI-capable
+workforce, not graduates for traditional
 software jobs, which are shrinking (Charles, 2026-10-23). It is portfolio-based, needs no calculus, and requires a minor
 from another unit so students apply AI in a domain. Curriculum blocks: programming literacy,
 software development with AI, data, networking and security, QA and testing, ethics/tech and
