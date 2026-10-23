@@ -448,13 +448,6 @@ table.cmp td:first-child{color:var(--term); font-weight:700; white-space:nowrap}
 .deg .endq p{margin:0; font-size:1.2em; color:var(--warm-gray)}
 .deg .endq h4{margin:0; font-size:2.3em; line-height:1.1; color:var(--ink); text-wrap:balance}
 .deg .endq h4 span{color:var(--term)}
-.deg .hours{display:flex; gap:.35em; align-items:center; margin-top:.4em}
-.deg .hours i{width:1.5em; height:1.5em; border-radius:3px; border:2px solid var(--course-accent); background:transparent}
-.deg .hours em{font-style:normal; font-weight:700; font-size:1.6em; color:var(--term); margin-left:.3em}
-.deg.p7 .hours i{animation:fillhr 3.2s ease-in-out infinite; animation-delay:calc(var(--i) * 160ms)}
-.deg.p7 .hours em{animation:blink 1.6s ease-in-out infinite}
-@keyframes fillhr{0%,15%{background:transparent} 45%,75%{background:var(--course-accent)} 100%{background:transparent}}
-@keyframes blink{0%,100%{opacity:1} 50%{opacity:.35}}
 
 /* Phases. p1: shares. p2: split. p3: CS/ML. p4: AI SE. p5: faculty. p6: enrollment. p7: question. */
 .deg.p1 .pct{opacity:1; transform:none}
@@ -468,8 +461,7 @@ table.cmp td:first-child{color:var(--term); font-weight:700; white-space:nowrap}
 .deg.p6 .enr{opacity:1; transform:translate(-50%,-50%)}
 .deg.p6 .se{transform:translate(-50%,-50%) scale(1.06); box-shadow:0 0 0 .5em var(--se-soft)}
 .deg.p7 .endq{opacity:1; transform:none; pointer-events:auto}
-@media (prefers-reduced-motion:reduce){ .deg .nd,.deg .chips span,.deg .pct,.deg .endq{transition:none} .deg.p7 .hours i,.deg.p7 .hours em{animation:none} }
-
+@media (prefers-reduced-motion:reduce){ .deg .nd,.deg .chips span,.deg .pct,.deg .endq{transition:none} }
 /* ---------- The B.A. sketch: curriculum blocks that rise in when the slide opens ---------- */
 .ba{--ba:#B5583C; --ml:#2F6B8A; width:min(100%, 150vh); margin:0 auto; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1.1vw; font-size:calc(var(--stage-text) * .62); text-align:left}
 .ba .blk{
@@ -547,9 +539,8 @@ table.cmp td:first-child{color:var(--term); font-weight:700; white-space:nowrap}
     <div class="nd tag fac" data-more="If the service function moves to the B.A., the B.S. can become more research-focused, with more advanced courses close to faculty research."><b>Research faculty</b>Teach advanced courses close to their research</div>
     <div class="nd tag enr" data-more="Enrollment is expected to drop further in 2027–28, which makes a clear direction more urgent."><b>Enrollment</b>The B.A. brings in most students</div>
     <div class="endq" id="deg-end">
-      <p>To build either degree</p>
-      <h4>How many <span>hours</span> will you commit?</h4>
-      <div class="hours" aria-hidden="true"><i style="--i:0"></i><i style="--i:1"></i><i style="--i:2"></i><i style="--i:3"></i><i style="--i:4"></i><i style="--i:5"></i><i style="--i:6"></i><i style="--i:7"></i><em>?</em></div>
+      <p>Our ideas, shared for discussion</p>
+      <h4>A research <span>B.S.</span> and a <span>B.A. in Artificial Intelligence</span></h4>
     </div>
   </div>
   <div class="loopbar"><p class="loopcap" id="deg-cap" aria-live="polite"></p></div>
@@ -577,9 +568,9 @@ table.cmp td:first-child{color:var(--term); font-weight:700; white-space:nowrap}
 
 <section class="deck-slide part">
   <div class="head">
-    <p class="course">The question for today</p>
-    <p class="say">To build either degree, how many hours will you commit?</p>
-    <p class="sub">If the total is too small, an overhaul isn't viable. Enrollment is expected to drop further in 2027–28.</p>
+    <p class="course">Our ideas</p>
+    <p class="say">Two degrees: a research B.S. and a B.A. in Artificial Intelligence</p>
+    <p class="sub">Ideas from Charles and Chris, shared for discussion.</p>
   </div>
 </section>
 <canvas id="ink" aria-hidden="true"></canvas>
@@ -1218,9 +1209,9 @@ table.cmp td:first-child{color:var(--term); font-weight:700; white-space:nowrap}
         more:'A reshaped version of the existing B.A.: no calculus, portfolio-based, and a required minor so students apply AI in a domain. The next slide sketches it.' },
       { m:'Why', d:5600, cap:'Research faculty get a more research-focused B.S., and teach closer to their research.' },
       { d:5600, cap:'The B.A. brings in most of the students. Enrollment is expected to drop further in 2027–28.' },
-      { m:'Ask', d:7000, cap:'To build either degree, the first question is: how many hours will each of us commit?' }
+      { m:'Ask', d:7000, cap:'Two degrees, each built for where its students are going. These are our ideas, shared for discussion.' }
     ];
-    const LABEL = { Today:'Today', Split:'The split', Why:'Why', Ask:'The question' };
+    const LABEL = { Today:'Today', Split:'The split', Why:'Why', Ask:'Our ideas' };
 
     /* Geometry: node centres and edges in canvas pixels. */
     let W = 0, H = 0, dpr = 1;
@@ -1330,7 +1321,7 @@ table.cmp td:first-child{color:var(--term); font-weight:700; white-space:nowrap}
     }
     reset();
 
-    const NOTE = { Today:'where students go now', Split:'one degree becomes two', Why:'what each side gains', Ask:'the hours question' };
+    const NOTE = { Today:'where students go now', Split:'one degree becomes two', Why:'what each side gains', Ask:'the summary' };
     const P = Player({
       el:$('deg-player'), cap, steps:S, dur:s => s.d, reduce, apply, reset,
       stops:S.map((x, k) => x.m ? { k, label:LABEL[x.m], text:NOTE[x.m], accent:x.m === 'Ask' } : null).filter(Boolean),

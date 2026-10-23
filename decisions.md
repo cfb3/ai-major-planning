@@ -46,3 +46,11 @@ grading. The course itself still uses labor-based grading.
 **Why:** Neither is sure what APCC expects in that section. A generic line keeps the official
 syllabus usable by any instructor and avoids debating grading philosophy in the approval process.
 **Who:** Charles, Chris (Chris on Slack; [syllabus draft](courses/tcss-461-syllabus-draft.md))
+
+## 2026-10-23 — Present ideas only; no hours question for faculty
+**Decision:** Drop the "how many hours will you commit?" question from the 2026-10-23 meeting and
+the deck. Present the two-degree ideas with no explicit questions for faculty. Supersedes the
+hours part of the 2026-10-22 entry "Add the two-degree slide and the hours question to
+2026-10-23".
+**Why:** Charles wants it framed as "here are our ideas," not as asks or a mandate.
+**Who:** Charles

@@ -56,4 +56,3 @@ course** (Chris would teach it, as a candidate course).
 - [ ] Chris: prepare the 5-minute demo
 - [ ] Charles: prepare the 5-minute gaps talk
 - [ ] Charles: one slide showing the two-degree structure
-- [ ] Charles: ask each colleague how many hours they'll commit

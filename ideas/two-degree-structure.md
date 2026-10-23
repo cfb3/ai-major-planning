@@ -42,8 +42,8 @@ Split the CS program into two degrees that match what students actually do:
 
 - AI Software Engineering grows out of the AI/SWD work in this repo. TCSS 461 (taught as 490
   today) is a likely early course. See [tcss-461-description-update.md](tcss-461-description-update.md).
-- First step: a single slide of the two-degree shape for the 2026-10-23 CS colleagues meeting,
-  paired with asking how many hours each faculty member will commit.
+- First step: present the two-degree shape at the 2026-10-23 CS colleagues meeting as our
+  ideas, with no explicit questions for faculty.
   Animated deck: [slides/2026-10-23-two-degrees/](../slides/2026-10-23-two-degrees/index.html),
   published at https://claude.ai/artifact/12b6iy8GisnujUnjCxyJX8 (private to Charles until
   shared). Built on the TCSS 490 Course Forge deck runtime and Player.
