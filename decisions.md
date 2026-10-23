@@ -41,7 +41,7 @@ an overhaul is viable at all.
 
 ## 2026-10-23 — Keep labor-based grading out of the TCSS 461 Kuali syllabus
 **Decision:** The syllabus submitted for TCSS 461 describes grading generically (grades based on
-completing the course projects and deliverables; no exams). It doesn't mention labor-based
+completing the course projects and deliverables). It doesn't mention labor-based
 grading. The course itself still uses labor-based grading.
 **Why:** Neither is sure what APCC expects in that section. A generic line keeps the official
 syllabus usable by any instructor and avoids debating grading philosophy in the approval process.
