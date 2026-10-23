@@ -132,7 +132,7 @@ Each week also includes assigned reading and regular reflection on the work.
 
 ## Grading
 
-Grades are based on completing the course projects and deliverables below. There are no exams.
+Grades are based on completing the course projects and deliverables below.
 
 **Deliverables:**
 
