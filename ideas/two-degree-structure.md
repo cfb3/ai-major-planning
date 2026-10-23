@@ -8,12 +8,13 @@
 ## Update 2026-10-23: a B.A. in Artificial Intelligence
 
 Charles and Chris refined the service side into a **B.A. in Artificial Intelligence**, made by
-reshaping the existing B.A.; the **B.S. stays the research and grad-school track**, with
+reshaping the existing B.A. or creating a new one (open); the **B.S. stays the research and grad-school track**, with
 possible tracks such as AI/ML, quantum computing, and others. The B.A. is
 practice-oriented ("creating with AI"), portfolio-based, needs no calculus, and requires a minor
 from another unit so students apply AI in a domain. Curriculum blocks: programming literacy,
 software development with AI, data, networking and security, QA and testing, ethics/tech and
-society (with SIAS), plus the minor. Details:
+society (with SIAS), a **senior design capstone (2–3 courses)**, one block left open for
+colleagues' suggestions, plus the minor. Details:
 [meetings/2026-10-23-charles-chris.md](../meetings/2026-10-23-charles-chris.md). The table below
 is the 2026-10-22 version; where they differ, this update supersedes it.
 

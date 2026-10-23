@@ -24,7 +24,8 @@ Charles and Chris converged on a **Bachelor of Arts in Artificial Intelligence**
 considered, not decided). It refines the two-degree idea from
 [2026-10-22](2026-10-22-charles-chris-tom.md):
 
-- **Reshape the existing B.A.** into the AI degree; the **B.S. stays the research and
+- **Reshape the existing B.A.** into the AI degree (or create a new B.A.; Charles left this open
+  after the call); the **B.S. stays the research and
   grad-school track**. That avoids building a new program from scratch.
 - **Philosophy: "creating with AI."** Practitioners and creators, not researchers: software,
   games, books, multimedia. Example: a graduate student using Claude and Gemini in a pipeline to
@@ -44,6 +45,8 @@ considered, not decided). It refines the two-degree idea from
 | Networking, security | 1 each? | Practical, systems-level understanding |
 | QA and testing | 2–3 courses | Testing methods, reading and writing specs, quality assurance |
 | Ethics, tech and society | ? | AI ethics, environmental impact, labor; partner with SIAS faculty |
+| Senior design capstone | 2–3 courses | Team builds a real product; brings the blocks together (added by Charles after the call) |
+| Open block | ? | Left open for colleagues' suggestions (added by Charles after the call) |
 | Required minor | a minor | From another unit: business (Milgard), GIS, environmental science, and others |
 
 - **AI access:** one Claude Team account per student for the whole program, instead of separate

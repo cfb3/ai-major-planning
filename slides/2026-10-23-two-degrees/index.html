@@ -473,13 +473,18 @@ table.cmp td:first-child{color:var(--term); font-weight:700; white-space:nowrap}
 .ba .blk b{color:var(--ba); font-size:1.08em}
 .ba .blk small{color:var(--warm-gray); font-weight:700; font-size:.72em; letter-spacing:.07em; text-transform:uppercase}
 .ba .blk span{color:var(--def); line-height:1.3}
+.ba .blk.capstone{grid-column:span 2; background:var(--ba); border-color:var(--ba)}
+.ba .blk.capstone b{color:#fff; font-size:1.3em}
+.ba .blk.capstone small,.ba .blk.capstone span{color:#FBEDE6}
+.ba .blk.open{border-style:dashed; border-top-style:solid; border-top-color:var(--warm-gray); background:transparent}
+.ba .blk.open b{color:var(--def)}
 .ba .blk.minor{grid-column:span 3; border-top-color:var(--ml); flex-direction:row; flex-wrap:wrap; align-items:baseline; gap:.3em 1em}
 .ba .blk.minor b{color:var(--ml)}
 .ba-tags{display:flex; flex-wrap:wrap; justify-content:center; gap:.6em; margin-top:2vh; font-size:calc(var(--stage-text) * .6); opacity:0; transition:opacity .6s ease 1.5s}
 .ba-tags span{border:2px solid var(--course-accent); color:var(--course-accent-dark); border-radius:99px; padding:.15em .8em; font-weight:700}
 .deck-slide.on .ba .blk{opacity:1; transform:none}
 .deck-slide.on .ba-tags{opacity:1}
-@media (max-width:560px){ .ba{grid-template-columns:1fr} .ba .blk.minor{grid-column:auto} }
+@media (max-width:560px){ .ba{grid-template-columns:1fr} .ba .blk.minor,.ba .blk.capstone{grid-column:auto} }
 @media (prefers-reduced-motion:reduce){ .ba .blk,.ba-tags{transition:none} }
 </style>
 <section class="deck-slide part">
@@ -521,7 +526,7 @@ table.cmp td:first-child{color:var(--term); font-weight:700; white-space:nowrap}
       <h4>B.S. Computer Science</h4>
       <div class="chips"><span style="--i:0">Math</span><span style="--i:1">Theory</span><span style="--i:2">Grad school prep</span><span style="--i:3">Track: AI/ML</span><span style="--i:4">Track: Quantum computing</span><span style="--i:5">More tracks…</span></div>
     </div>
-    <div class="nd box se" data-more="A reshaped B.A. for most students: creating with AI. Practice-oriented and portfolio-based, with no calculus and a required minor.">
+    <div class="nd box se" data-more="A reshaped or new B.A. for most students: creating with AI. Practice-oriented and portfolio-based, with no calculus and a required minor.">
       <span class="kind">Practice</span>
       <h4>B.A. in Artificial Intelligence</h4>
       <div class="chips"><span style="--i:0">Software dev with AI</span><span style="--i:1">Data</span><span style="--i:2">Security</span><span style="--i:3">QA &amp; testing</span><span style="--i:4">Ethics &amp; society</span><span style="--i:5">+ a minor</span></div>
@@ -550,7 +555,7 @@ table.cmp td:first-child{color:var(--term); font-weight:700; white-space:nowrap}
 <section class="deck-slide">
   <div class="head">
     <p class="say">A sketch: the <span class="term">B.A. in Artificial Intelligence</span></p>
-    <p class="sub">Creating with AI. Reshape the existing B.A.; the B.S. stays the research and grad-school track.</p>
+    <p class="sub">Creating with AI. Reshape the existing B.A. or create a new one; the B.S. stays the research and grad-school track.</p>
   </div>
   <div class="stage">
     <div class="ba">
@@ -560,7 +565,9 @@ table.cmp td:first-child{color:var(--term); font-weight:700; white-space:nowrap}
       <div class="blk" style="--i:3"><small>Practical, systems-level</small><b>Networking and security</b><span>How systems talk and how they are attacked</span></div>
       <div class="blk" style="--i:4"><small>2–3 courses</small><b>QA and testing</b><span>Testing methods, reading and writing specs, quality</span></div>
       <div class="blk" style="--i:5"><small>With SIAS faculty</small><b>Ethics, tech and society</b><span>AI ethics, environmental impact, labor</span></div>
-      <div class="blk minor" style="--i:6"><b>A required minor</b><span>Apply AI in a domain: business (Milgard), GIS, environmental science, the arts, and more</span></div>
+      <div class="blk capstone" style="--i:6"><small>2–3 courses</small><b>Senior design: the capstone</b><span>A team builds a real product for a real user, bringing every block together</span></div>
+      <div class="blk open" style="--i:7"><small>To be decided</small><b>Open for suggestions</b><span>Room for ideas from colleagues</span></div>
+      <div class="blk minor" style="--i:8"><b>A required minor</b><span>Apply AI in a domain: business (Milgard), GIS, environmental science, the arts, and more</span></div>
     </div>
     <div class="ba-tags"><span>No calculus</span><span>Portfolio, not exams</span><span>One Claude Team account for the whole program</span></div>
   </div>
@@ -1206,7 +1213,7 @@ table.cmp td:first-child{color:var(--term); font-weight:700; white-space:nowrap}
       { d:5600, cap:'B.S. Computer Science: math and theory, with tracks such as AI/ML and quantum computing, for students headed to grad school and research.',
         more:'The B.S. stays the research and graduate-school track. Possible tracks: AI/ML, quantum computing, and others.' },
       { d:5600, cap:'B.A. in Artificial Intelligence: creating with AI, built on practice and a portfolio, for students headed to industry.',
-        more:'A reshaped version of the existing B.A.: no calculus, portfolio-based, and a required minor so students apply AI in a domain. The next slide sketches it.' },
+        more:'A reshaped version of the existing B.A., or a new one: no calculus, portfolio-based, and a required minor so students apply AI in a domain. The next slide sketches it.' },
       { m:'Why', d:5600, cap:'Research faculty get a more research-focused B.S., and teach closer to their research.' },
       { d:5600, cap:'The B.A. brings in most of the students. Enrollment is expected to drop further in 2027–28.' },
       { m:'Ask', d:7000, cap:'Two degrees, each built for where its students are going. These are our ideas, shared for discussion.' }
