@@ -18,7 +18,10 @@ software development with AI, data, networking and security, QA and testing, eth
 society (with SIAS), a **senior design capstone (2–3 courses)**, one block left open for
 colleagues' suggestions, plus the minor. Details:
 [meetings/2026-10-23-charles-chris.md](../meetings/2026-10-23-charles-chris.md). The table below
-is the 2026-10-22 version; where they differ, this update supersedes it. The deck shows an
+is the 2026-10-22 version; where they differ, this update supersedes it. The B.S. isn't only
+grad school and research: its graduates become deep-tech professionals (researchers, systems
+engineers, AI/ML engineers) in advanced and research roles. The deck frames everything around
+students, with no faculty-versus-faculty framing and no enrollment claims (Charles, 2026-10-23). The deck shows an
 illustrative 75/25 service/research split (Charles's choice for the presentation); the 5–10%
 research figure below is the earlier estimate.
 

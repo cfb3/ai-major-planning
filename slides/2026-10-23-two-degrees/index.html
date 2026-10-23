@@ -415,19 +415,23 @@ table.cmp td:first-child{color:var(--term); font-weight:700; white-space:nowrap}
 
 /* Where graduates go, on the right. */
 .deg .dst{width:17%; text-align:left; display:flex; flex-direction:column; gap:.2em; padding-left:.7em; border-left:3px solid var(--rule)}
-.deg .res{left:90%; top:16%; border-left-color:var(--ml)}
+.deg .res{left:90%; top:19%; border-left-color:var(--ml)}
 .deg .ind{left:90%; top:78%; border-left-color:var(--se)}
 .deg .dst b{font-size:1.05em}
-.deg .ind .next{display:none; color:var(--se)}
-.deg.p2 .ind .now{display:none}
-.deg.p2 .ind .next{display:inline-block; animation:relabel .7s cubic-bezier(.3,1.5,.5,1)}
-.deg .ind .roles{display:none; flex-wrap:wrap; gap:.25em; margin:.1em 0 .15em}
-.deg .ind .roles i{
+.deg .dst .next{display:none}
+.deg .res .next{color:var(--ml)} .deg .ind .next{color:var(--se)}
+.deg.p2 .dst .now{display:none}
+.deg.p2 .dst .next{display:inline-block; animation:relabel .7s cubic-bezier(.3,1.5,.5,1)}
+.deg .dst .roles{display:none; flex-wrap:wrap; gap:.25em; margin:.1em 0 .15em}
+.deg .dst .roles i{
   font-style:normal; font-size:.78em; font-weight:700; padding:.1em .5em; border-radius:99px;
-  background:var(--se-soft); color:var(--se); opacity:0; transform:scale(.6);
+  opacity:0; transform:scale(.6);
   animation:rolepop .5s cubic-bezier(.3,1.6,.5,1) forwards; animation-delay:calc(.5s + var(--i) * 220ms);
 }
-.deg.p2 .ind .roles{display:flex}
+.deg .res .roles i{background:var(--ml-soft); color:var(--ml)}
+.deg .ind .roles i{background:var(--se-soft); color:var(--se)}
+.deg.p2 .dst .roles{display:flex}
+.deg.p2 .pct{display:none}
 @keyframes rolepop{to{opacity:1; transform:none}}
 @keyframes relabel{from{opacity:0; transform:translateY(.5em) scale(.85)} to{opacity:1; transform:none}}
 .deg .pct{
@@ -440,13 +444,13 @@ table.cmp td:first-child{color:var(--term); font-weight:700; white-space:nowrap}
 
 /* Side notes that pop in later. */
 .deg .tag{
-  width:19%; font-size:.86em; padding:.5em .75em; border-radius:6px; background:#fff;
+  width:18%; font-size:.86em; padding:.5em .75em; border-radius:6px; background:#fff;
   opacity:0; transform:translate(-50%,-50%) scale(.6);
 }
 .deg .tag b{display:block; font-size:.8em; letter-spacing:.08em; text-transform:uppercase; margin-bottom:.15em}
-.deg .fac{left:19%; top:17%; border:2px solid var(--ml); color:var(--ink)}
+.deg .fac{left:16%; top:17%; border:2px solid var(--ml); color:var(--ink)}
 .deg .fac b{color:var(--ml)}
-.deg .enr{left:19%; top:83%; border:2px solid var(--se); color:var(--ink)}
+.deg .enr{left:16%; top:83%; border:2px solid var(--se); color:var(--ink)}
 .deg .enr b{color:var(--se)}
 
 /* The closing question. */
@@ -461,7 +465,7 @@ table.cmp td:first-child{color:var(--term); font-weight:700; white-space:nowrap}
 .deg .endq h4{margin:0; font-size:2.3em; line-height:1.1; color:var(--ink); text-wrap:balance}
 .deg .endq h4 span{color:var(--term)}
 
-/* Phases. p1: shares. p2: split. p3: CS/ML. p4: AI SE. p5: faculty. p6: enrollment. p7: question. */
+/* Phases. p1: shares. p2: split. p3: CS/ML. p4: AI SE. p5: deep-tech path. p6: AI-capable workforce. p7: closing card. */
 .deg.p1 .pct{opacity:1; transform:none}
 .deg.p1 .dst small{opacity:1}
 .deg.p2 .cs{opacity:0; transform:translate(-50%,-50%) scale(1.25)}
@@ -473,7 +477,7 @@ table.cmp td:first-child{color:var(--term); font-weight:700; white-space:nowrap}
 .deg.p6 .enr{opacity:1; transform:translate(-50%,-50%)}
 .deg.p6 .se{transform:translate(-50%,-50%) scale(1.06); box-shadow:0 0 0 .5em var(--se-soft)}
 .deg.p7 .endq{opacity:1; transform:none; pointer-events:auto}
-@media (prefers-reduced-motion:reduce){ .deg .nd,.deg .chips span,.deg .pct,.deg .endq{transition:none} .deg .ind .roles i{animation:none; opacity:1; transform:none} }
+@media (prefers-reduced-motion:reduce){ .deg .nd,.deg .chips span,.deg .pct,.deg .endq{transition:none} .deg .dst .roles i{animation:none; opacity:1; transform:none} }
 /* ---------- The B.A. sketch: curriculum blocks that rise in when the slide opens ---------- */
 .ba{--ba:#B5583C; --ml:#2F6B8A; width:min(100%, 150vh); margin:0 auto; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1.1vw; font-size:calc(var(--stage-text) * .62); text-align:left}
 .ba .blk{
@@ -545,10 +549,11 @@ table.cmp td:first-child{color:var(--term); font-weight:700; white-space:nowrap}
       <h4>B.A. in Artificial Intelligence</h4>
       <div class="chips"><span style="--i:0">Software dev with AI</span><span style="--i:1">Data</span><span style="--i:2">Security</span><span style="--i:3">QA &amp; testing</span><span style="--i:4">Ethics &amp; society</span><span style="--i:5">+ a minor</span></div>
     </div>
-    <div class="nd dst res" data-more="Graduate school, research careers and highly specialized technical roles.">
-      <b>Grad school &amp; research</b>
+    <div class="nd dst res" data-more="Advanced technical careers and graduate school. Not every B.S. graduate goes into research.">
+      <b><span class="now">Grad school &amp; research</span><span class="next">Deep-tech professionals</span></b>
+      <span class="roles"><i style="--i:0">Researchers</i><i style="--i:1">Systems engineers</i><i style="--i:2">AI/ML engineers</i></span>
       <span class="pct" id="deg-res">25%</span>
-      <small>about a quarter</small>
+      <small><span class="now">about a quarter</span><span class="next">for advanced and research roles</span></small>
     </div>
     <div class="nd dst ind" data-more="Traditional software jobs are shrinking. The growth is in work that people do with AI, across every field.">
       <b><span class="now">Industry software jobs</span><span class="next">AI-fluent professionals</span></b>
@@ -556,8 +561,8 @@ table.cmp td:first-child{color:var(--term); font-weight:700; white-space:nowrap}
       <span class="pct" id="deg-ind">75%</span>
       <small><span class="now">most graduates</span><span class="next">for the AI-capable workforce</span></small>
     </div>
-    <div class="nd tag fac" data-more="If the service function moves to the B.A., the B.S. can become more research-focused, with more advanced courses close to faculty research."><b>Research faculty</b>Teach advanced courses close to their research</div>
-    <div class="nd tag enr" data-more="Enrollment is expected to drop further in 2027–28, which makes a clear direction more urgent."><b>Enrollment</b>The B.A. brings in most students</div>
+    <div class="nd tag fac" data-more="A math- and theory-heavy path into systems, AI/ML and research roles, or on to graduate school."><b>Headed for deep technical work</b>Theory and math for advanced careers and grad school</div>
+    <div class="nd tag enr" data-more="A practice-based path for students who will build with AI in every kind of workplace."><b>Headed for the AI-capable workforce</b>Builds with AI, across every field</div>
     <div class="endq" id="deg-end">
       <p>Our ideas, shared for discussion</p>
       <h4>A research <span>B.S.</span> and a <span>B.A. in Artificial Intelligence</span></h4>
@@ -1225,15 +1230,15 @@ table.cmp td:first-child{color:var(--term); font-weight:700; white-space:nowrap}
       { d:6400, cap:'Most graduates go to industry software jobs. About a quarter go to grad school or research.',
         more:'For about a decade the degree has worked as a service degree. The percentages here are illustrative.' },
       { m:'Split', d:5200, cap:'Make it explicit with two degrees, one for each path.' },
-      { d:5600, cap:'B.S. Computer Science is math and theory, with tracks such as AI/ML and quantum computing, for students headed to grad school and research.',
+      { d:5600, cap:'B.S. Computer Science is math and theory, with tracks such as AI/ML and quantum computing, for deep technical careers and grad school.',
         more:'The B.S. stays the research and graduate-school track. Possible tracks include AI/ML, quantum computing, and others.' },
       { d:5600, cap:'B.A. in Artificial Intelligence is about creating with AI, built on practice and a portfolio, for AI-fluent professionals who build with AI, integrate it into their field, and direct it.',
         more:'It could be a reshaped version of the existing B.A. or a new one. It has no calculus, is portfolio-based, and requires a minor so students apply AI in a domain. The next slide sketches it.' },
-      { m:'Why', d:5600, cap:'Research faculty get a more research-focused B.S., and teach closer to their research.' },
-      { d:5600, cap:'The B.A. brings in most of the students. Enrollment is expected to drop further in 2027–28.' },
+      { m:'Why', d:5600, cap:'Students headed for deep technical work get a rigorous path into advanced careers and grad school.' },
+      { d:5600, cap:'Everyone else gets a degree built for the AI-capable workforce.' },
       { m:'Ask', d:7000, cap:'Two degrees, each built for where its students are going. These are our ideas, shared for discussion.' }
     ];
-    const LABEL = { Today:'Today', Split:'The split', Why:'Why', Ask:'Our ideas' };
+    const LABEL = { Today:'Today', Split:'The split', Why:'For students', Ask:'Our ideas' };
 
     /* Geometry: node centres and edges in canvas pixels. */
     let W = 0, H = 0, dpr = 1;
@@ -1343,7 +1348,7 @@ table.cmp td:first-child{color:var(--term); font-weight:700; white-space:nowrap}
     }
     reset();
 
-    const NOTE = { Today:'where students go now', Split:'one degree becomes two', Why:'what each side gains', Ask:'the summary' };
+    const NOTE = { Today:'where students go now', Split:'one degree becomes two', Why:'what each path offers', Ask:'the summary' };
     const P = Player({
       el:$('deg-player'), cap, steps:S, dur:s => s.d, reduce, apply, reset,
       stops:S.map((x, k) => x.m ? { k, label:LABEL[x.m], text:NOTE[x.m], accent:x.m === 'Ask' } : null).filter(Boolean),
