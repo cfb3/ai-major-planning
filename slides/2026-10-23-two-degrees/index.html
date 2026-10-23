@@ -418,6 +418,10 @@ table.cmp td:first-child{color:var(--term); font-weight:700; white-space:nowrap}
 .deg .res{left:90%; top:16%; border-left-color:var(--ml)}
 .deg .ind{left:90%; top:78%; border-left-color:var(--se)}
 .deg .dst b{font-size:1.05em}
+.deg .ind .next{display:none; color:var(--se)}
+.deg.p2 .ind .now{display:none}
+.deg.p2 .ind .next{display:inline-block; animation:relabel .7s cubic-bezier(.3,1.5,.5,1)}
+@keyframes relabel{from{opacity:0; transform:translateY(.5em) scale(.85)} to{opacity:1; transform:none}}
 .deg .pct{
   font-size:2.1em; font-weight:700; line-height:1; font-variant-numeric:tabular-nums;
   opacity:0; transform:scale(.6); transform-origin:left center;
@@ -536,8 +540,8 @@ table.cmp td:first-child{color:var(--term); font-weight:700; white-space:nowrap}
       <span class="pct" id="deg-res">25%</span>
       <small>about a quarter</small>
     </div>
-    <div class="nd dst ind" data-more="Software development jobs in industry, increasingly done with AI.">
-      <b>Industry software jobs</b>
+    <div class="nd dst ind" data-more="Traditional software jobs are shrinking. The growth is in work that people do with AI, across every field.">
+      <b><span class="now">Industry software jobs</span><span class="next">The AI-capable workforce</span></b>
       <span class="pct" id="deg-ind">75%</span>
       <small>most graduates</small>
     </div>
@@ -1212,7 +1216,7 @@ table.cmp td:first-child{color:var(--term); font-weight:700; white-space:nowrap}
       { m:'Split', d:5200, cap:'Make it explicit with two degrees, one for each path.' },
       { d:5600, cap:'B.S. Computer Science is math and theory, with tracks such as AI/ML and quantum computing, for students headed to grad school and research.',
         more:'The B.S. stays the research and graduate-school track. Possible tracks include AI/ML, quantum computing, and others.' },
-      { d:5600, cap:'B.A. in Artificial Intelligence is about creating with AI, built on practice and a portfolio, for students headed to industry.',
+      { d:5600, cap:'B.A. in Artificial Intelligence is about creating with AI, built on practice and a portfolio, for the AI-capable workforce.',
         more:'It could be a reshaped version of the existing B.A. or a new one. It has no calculus, is portfolio-based, and requires a minor so students apply AI in a domain. The next slide sketches it.' },
       { m:'Why', d:5600, cap:'Research faculty get a more research-focused B.S., and teach closer to their research.' },
       { d:5600, cap:'The B.A. brings in most of the students. Enrollment is expected to drop further in 2027–28.' },
