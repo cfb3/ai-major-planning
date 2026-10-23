@@ -42,7 +42,7 @@ considered, not decided). It refines the two-degree idea from
 | Programming literacy | 1 course | Read code and file structures; modularization, decomposition, state, repetition |
 | Software development with AI | 2–3 courses | How systems fit together: web, mobile, peer-to-peer, distributed |
 | Data | 1 course | Data formats, databases, basic data theory (no SQL or ER diagrams required) |
-| Design, UI/UX and creativity | 1–2 courses | Design thinking, usable interfaces, creative work with AI (added by Charles after the call) |
+| Creativity and design | 1–2 courses | Creative work with AI (games, media, stories), plus design thinking and UX (added by Charles after the call) |
 | Networking, security | 1 each? | Practical, systems-level understanding |
 | QA and testing | 2–3 courses | Testing methods, reading and writing specs, quality assurance |
 | Ethics, tech and society | ? | AI ethics, environmental impact, labor; partner with SIAS faculty |

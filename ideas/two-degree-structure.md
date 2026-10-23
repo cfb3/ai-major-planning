@@ -14,7 +14,7 @@ practice-oriented ("creating with AI") and produces AI-fluent professionals (bui
 integrators, directors) for the AI-capable workforce, not graduates for traditional
 software jobs, which are shrinking (Charles, 2026-10-23). It is portfolio-based, needs no calculus, and requires a minor
 from another unit so students apply AI in a domain. Curriculum blocks: programming literacy,
-software development with AI, data, design/UI/UX and creativity (1–2 courses), networking and security, QA and testing, ethics/tech and
+software development with AI, data, creativity and design (1–2 courses: creative work with AI such as games, media and stories, plus design and UX), networking and security, QA and testing, ethics/tech and
 society (with SIAS), a **senior design capstone (2–3 courses)**, one block left open for
 colleagues' suggestions, plus the minor. Details:
 [meetings/2026-10-23-charles-chris.md](../meetings/2026-10-23-charles-chris.md). The table below
