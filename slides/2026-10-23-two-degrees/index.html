@@ -395,6 +395,8 @@ table.cmp td:first-child{color:var(--term); font-weight:700; white-space:nowrap}
 .deg .box h4{margin:0; font-size:1.35em; line-height:1.1}
 .deg .box small{color:var(--warm-gray); font-size:.85em}
 .deg .cs{left:36%; top:50%; width:21%}
+.deg .cs .lanes{display:flex; flex-direction:column; gap:.45em; margin-top:.35em}
+.deg .cs .lane{display:block; padding:.25em .7em; border-radius:4px; background:var(--subtle); font-weight:700; color:var(--def)}
 .deg .cs h4{font-size:1.45em}
 .deg .ml, .deg .se{left:36%; top:50%; opacity:0; transform:translate(-50%,-50%) scale(.7)}
 .deg .ml{width:31%; border-color:var(--ml); border-top-width:.45em}
@@ -537,9 +539,9 @@ table.cmp td:first-child{color:var(--term); font-weight:700; white-space:nowrap}
       <div class="ring"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="8" cy="8" r="3.2" fill="none" stroke="#191919" stroke-width="1.8"/><circle cx="16.5" cy="9" r="2.6" fill="none" stroke="#191919" stroke-width="1.8"/><path d="M2.8 19c.6-3.4 2.7-5.2 5.2-5.2s4.6 1.8 5.2 5.2M13.2 14.6c.9-.9 2-1.4 3.3-1.4 2.2 0 3.9 1.6 4.4 4.6" fill="none" stroke="#191919" stroke-width="1.8" stroke-linecap="round"/></svg></div>
       <b>Students</b>
     </div>
-    <div class="nd box cs" data-more="Today there is one degree with one set of requirements, whatever a student plans to do after graduating.">
+    <div class="nd box cs" data-more="Today students choose a B.A. or a B.S. in Computer Science. Almost all B.A. graduates go to industry. B.S. graduates split between industry and grad school.">
       <h4>Computer Science</h4>
-      <small>One degree today</small>
+      <div class="lanes"><span class="lane lane-ba">B.A.</span><span class="lane lane-bs">B.S.</span></div>
     </div>
     <div class="nd box ml" data-more="The B.S. stays the research and graduate-school track. It has more math and theory, with possible tracks in AI/ML, quantum computing, and others.">
       <span class="kind">Research</span>
@@ -1221,8 +1223,8 @@ table.cmp td:first-child{color:var(--term); font-weight:700; white-space:nowrap}
     let sp = 1, phase = -1, dots = [], resN = 0, indN = 0, raf = 0, last = 0, spawnAcc = 0, live = false;
 
     const S = [
-      { m:'Today', d:5200, cap:'Today, every student goes through one Computer Science degree.',
-        more:'Same requirements for everyone, whether they head to a software job or to graduate school.' },
+      { m:'Today', d:5200, cap:'Today, students take a B.A. or a B.S. in Computer Science.',
+        more:'Almost all B.A. graduates go to industry jobs. B.S. graduates split between industry and grad school.' },
       { d:6400, cap:'Most graduates go to industry software jobs. About a quarter go to grad school or research.',
         more:'For about a decade the degree has worked as a service degree. The percentages here are illustrative.' },
       { m:'Split', d:5200, cap:'Make it explicit with two degrees, one for each path.' },
@@ -1251,9 +1253,13 @@ table.cmp td:first-child{color:var(--term); font-weight:700; white-space:nowrap}
       return { x, y:r.top - o.top + r.height / 2 };
     }
     /* Each route: start, hub in, hub out, end. Read live, so the paths follow the boxes as they move. */
-    function route(kind, split){
-      const hub = split ? (kind === 'res' ? '.ml' : '.se') : '.cs';
-      return [pt('.src .ring', 'r'), pt(hub, 'l'), pt(hub, 'r'), pt(kind === 'res' ? '.res' : '.ind', 'l')];
+    /* Before the split each dot enters and leaves the CS box at its own lane (B.A. or B.S.). */
+    function route(kind, split, lane){
+      const end = pt(kind === 'res' ? '.res' : '.ind', 'l'), start = pt('.src .ring', 'r');
+      if (split) { const hub = kind === 'res' ? '.ml' : '.se'; return [start, pt(hub, 'l'), pt(hub, 'r'), end]; }
+      const y = pt(lane === 'ba' ? '.lane-ba' : '.lane-bs').y;
+      const a = pt('.cs', 'l'), b = pt('.cs', 'r');
+      return [start, { x:a.x, y }, { x:b.x, y }, end];
     }
     function bez(a, b, t, j){
       const mx = (a.x + b.x) / 2;
@@ -1263,15 +1269,16 @@ table.cmp td:first-child{color:var(--term); font-weight:700; white-space:nowrap}
                y:u*u*u*a.y + 3*u*u*t*c1.y + 3*u*t*t*c2.y + t*t*t*b.y };
     }
     function where(d, split){
-      const R = route(d.kind, split), t = d.t;
+      const R = route(d.kind, split, d.lane), t = d.t;
       if (t < 0.45) return bez(R[0], R[1], t / 0.45, d.j);
       if (t < 0.55) { const k = (t - 0.45) / 0.1; return { x:R[1].x + (R[2].x - R[1].x) * k, y:R[1].y + (R[2].y - R[1].y) * k + d.j * 0.3 }; }
       return bez(R[2], R[3], (t - 0.55) / 0.45, d.j);
     }
     function drawRoutes(split){
       ctx.lineWidth = 2; ctx.setLineDash([2, 7]); ctx.lineCap = 'round';
-      ['res', 'ind'].forEach(kind => {
-        const R = route(kind, split);
+      const pairs = split ? [['res'], ['ind']] : [['res', 'bs'], ['ind', 'bs'], ['ind', 'ba']];
+      pairs.forEach(([kind, lane]) => {
+        const R = route(kind, split, lane);
         ctx.strokeStyle = kind === 'res' ? 'rgba(47,107,138,.28)' : 'rgba(181,88,60,.28)';
         [[R[0], R[1]], [R[2], R[3]]].forEach(([a, b]) => {
           ctx.beginPath();
@@ -1281,9 +1288,16 @@ table.cmp td:first-child{color:var(--term); font-weight:700; white-space:nowrap}
       });
       ctx.setLineDash([]);
     }
+    /* Before the split, B.A. students (about 40%, illustrative) almost all go to industry and
+       B.S. students split about 40/60, which still adds up to roughly a quarter in research. */
     function spawn(){
-      const kind = Math.random() < RES_SHARE ? 'res' : 'ind';
-      dots.push({ kind, t:0, j:(Math.random() - 0.5) * H * 0.07, v:0.22 + Math.random() * 0.06, r:2.6 + Math.random() * 1.6 });
+      let kind, lane;
+      if (phase >= 2) { kind = Math.random() < RES_SHARE ? 'res' : 'ind'; lane = 'bs'; }
+      else {
+        lane = Math.random() < 0.4 ? 'ba' : 'bs';
+        kind = Math.random() < (lane === 'ba' ? 0.02 : 0.4) ? 'res' : 'ind';
+      }
+      dots.push({ kind, lane, t:0, j:(Math.random() - 0.5) * H * 0.07, v:0.22 + Math.random() * 0.06, r:2.6 + Math.random() * 1.6 });
     }
     function setPct(){
       const n = resN + indN;
