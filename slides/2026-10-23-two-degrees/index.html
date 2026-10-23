@@ -533,12 +533,12 @@ table.cmp td:first-child{color:var(--term); font-weight:700; white-space:nowrap}
     </div>
     <div class="nd dst res" data-more="Graduate school, research careers and highly specialized technical roles.">
       <b>Grad school &amp; research</b>
-      <span class="pct" id="deg-res">8%</span>
-      <small>our estimate: 5–10%</small>
+      <span class="pct" id="deg-res">25%</span>
+      <small>about a quarter</small>
     </div>
     <div class="nd dst ind" data-more="Software development jobs in industry, increasingly done with AI.">
       <b>Industry software jobs</b>
-      <span class="pct" id="deg-ind">92%</span>
+      <span class="pct" id="deg-ind">75%</span>
       <small>most graduates</small>
     </div>
     <div class="nd tag fac" data-more="If the service function moves to the B.A., the B.S. can become more research-focused, with more advanced courses close to faculty research."><b>Research faculty</b>Teach advanced courses close to their research</div>
@@ -1200,15 +1200,15 @@ table.cmp td:first-child{color:var(--term); font-weight:700; white-space:nowrap}
     const $ = id => document.getElementById(id);
     const cap = $('deg-cap'), cv = $('deg-fx'), ctx = cv.getContext('2d');
     const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const RES_SHARE = 0.08;          /* illustrative, from the 5-10% estimate */
+    const RES_SHARE = 0.25;          /* illustrative: a 75/25 split */
     const C = { ml:'#2F6B8A', se:'#B5583C', dim:'rgba(102,102,99,.16)' };
     let sp = 1, phase = -1, dots = [], resN = 0, indN = 0, raf = 0, last = 0, spawnAcc = 0, live = false;
 
     const S = [
       { m:'Today', d:5200, cap:'Today, every student goes through one Computer Science degree.',
         more:'Same requirements for everyone, whether they head to a software job or to graduate school.' },
-      { d:6400, cap:'Most graduates go to industry software jobs. About 5–10% go to grad school or research (our estimate).',
-        more:'For about a decade the degree has worked as a service degree. The percentages here are illustrative, based on our 5–10% estimate.' },
+      { d:6400, cap:'Most graduates go to industry software jobs. About a quarter go to grad school or research.',
+        more:'For about a decade the degree has worked as a service degree. The percentages here are illustrative.' },
       { m:'Split', d:5200, cap:'Make it explicit: two degrees, one for each path.' },
       { d:5600, cap:'B.S. Computer Science: math and theory, with tracks such as AI/ML and quantum computing, for students headed to grad school and research.',
         more:'The B.S. stays the research and graduate-school track. Possible tracks: AI/ML, quantum computing, and others.' },
@@ -1323,7 +1323,7 @@ table.cmp td:first-child{color:var(--term); font-weight:700; white-space:nowrap}
     }
     function reset(){
       Ink.beat();
-      resN = 8; indN = 92; setPct();
+      resN = 25; indN = 75; setPct();
       setPhase(-1, true);
     }
     reset();
