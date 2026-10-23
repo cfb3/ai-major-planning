@@ -84,6 +84,11 @@ whether a fee alone requires one), and offered the draft if so. He also said the
 2026-10-23 in the TCSS 490 section (46 students) and stays open at least 5 days. Waiting on
 Aubree's answer about the syllabus.
 
+**2026-10-23, later:** Aubree says even a small description change needs a new syllabus, so the
+generic Claude-drafted syllabus will be submitted. Before submitting, Charles will have Raghavi and
+one more colleague review it (the recap says "Meneka"; confirm the name). See
+[meetings/2026-10-23-charles-chris.md](../meetings/2026-10-23-charles-chris.md).
+
 | Date | What |
 | --- | --- |
 | 2026-11-06 | CSS faculty meeting: vote on the description |

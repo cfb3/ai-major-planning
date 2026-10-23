@@ -28,9 +28,12 @@ course** (Chris would teach it, as a candidate course).
 - **Evidence so far:** student demos from 2026-10-19. See
   [ideas/observed-gaps-from-student-demos.md](ideas/observed-gaps-from-student-demos.md).
 - **Draft structure:** [ideas/curriculum-skeleton.md](ideas/curriculum-skeleton.md).
-- **Bigger picture (2026-10-22):** Charles and Chris are considering splitting CS into a research
-  CS/ML degree and a service AI Software Engineering degree. See
-  [ideas/two-degree-structure.md](ideas/two-degree-structure.md).
+- **Bigger picture (updated 2026-10-23):** Charles and Chris are considering two degrees: the
+  B.S. stays the research and grad-school track, and the existing B.A. is reshaped into a
+  practice-oriented **B.A. in Artificial Intelligence** (portfolio-based, no calculus, required
+  minor). Presented as ideas, not a mandate. See
+  [ideas/two-degree-structure.md](ideas/two-degree-structure.md) and the
+  [deck](slides/2026-10-23-two-degrees/index.html).
 - **Near-term course:** TCSS 460 is cancelled for winter and spring; TCSS 490 runs in spring
   instead, maybe as a double section. Plan to move it permanently under TCSS 461 (new
   description, $75 fee; 461 is already an approved design elective) for **Spring 2027**. Aubree (SET Academic Services)

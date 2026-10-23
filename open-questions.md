@@ -16,10 +16,13 @@
 - **How does it relate to existing CS degrees?** Complement, alternative, or overlap? Which
   skeleton areas are already taught?
 
-- **Two degrees?** Should CS split into a research CS/ML degree and a service AI Software
-  Engineering degree? Charles and Chris are considering it as of 2026-10-22. See
-  [two-degree-structure.md](ideas/two-degree-structure.md). If so, the service side looks like a
-  major, not a certificate.
+- **Two degrees?** Should CS split into a research degree and a practice degree? As of
+  2026-10-23 the idea is to keep the B.S. as the research track and reshape the existing B.A. into
+  a B.A. in Artificial Intelligence. See [two-degree-structure.md](ideas/two-degree-structure.md).
+  This points toward a major, not a certificate.
+- **Who teaches the ethics, tech and society block?** Possibly SIAS faculty. Who to approach?
+- **One Claude Team account per student for the whole B.A.?** How would it be funded, if not
+  through per-course fees?
 - **Can anything be ready this academic year?**
 
 ## Faculty
