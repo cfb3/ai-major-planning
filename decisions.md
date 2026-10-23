@@ -38,3 +38,11 @@ to curriculum work.
 **Why:** A concrete picture gives the room something to react to. Committed hours show whether
 an overhaul is viable at all.
 **Who:** Charles, Chris ([conversation](meetings/2026-10-22-charles-chris-tom.md#for-tomorrow-2026-10-23-cs-colleagues-meeting))
+
+## 2026-10-23 — Keep labor-based grading out of the TCSS 461 Kuali syllabus
+**Decision:** The syllabus submitted for TCSS 461 describes grading generically (grades based on
+completing the course projects and deliverables; no exams). It doesn't mention labor-based
+grading. The course itself still uses labor-based grading.
+**Why:** Neither is sure what APCC expects in that section. A generic line keeps the official
+syllabus usable by any instructor and avoids debating grading philosophy in the approval process.
+**Who:** Charles, Chris (Chris on Slack; [syllabus draft](courses/tcss-461-syllabus-draft.md))

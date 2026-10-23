@@ -7,7 +7,7 @@
      generic so any instructor can teach it, and nothing requires generative AI.
      [Brackets] mark what is still open. -->
 
-**Status:** draft, 2026-10-22. Charles has reviewed it once; grading is open for Chris.
+**Status:** draft, 2026-10-22; grading filled in 2026-10-23. Reviewed by Charles; grading wording agreed with Chris.
 
 **Deadline context:** CSS faculty vote 2026-11-06; Aubree submits to APCC by 2026-11-25; first
 offering Spring 2027. See [the 461 idea](../ideas/tcss-461-description-update.md).
@@ -132,14 +132,13 @@ Each week also includes assigned reading and regular reflection on the work.
 
 ## Grading
 
-[Open for Chris.]
+Grades are based on completing the course projects and deliverables below. There are no exams.
 
 **Deliverables:**
 
 - Three individual builds (weeks 1–3)
 - Seven capstone milestones (weeks 4–10), including the design deliverables above
 - Regular reading checks and reflections
-- No exams
 
 ## Course Materials
 

@@ -88,7 +88,9 @@ didn't come up when Aubree tried to add him. She needs:
 
 - [ ] The updated catalog description
 - [ ] A syllabus: learning objectives, weekly course outline, grading details. First draft:
-      [courses/tcss-461-syllabus-draft.md](../courses/tcss-461-syllabus-draft.md)
+      [courses/tcss-461-syllabus-draft.md](../courses/tcss-461-syllabus-draft.md). Grading: on
+      2026-10-23 Charles and Chris agreed to keep labor-based grading out of the Kuali syllabus
+      (a generic line about course projects instead). The course itself still uses it.
 - [ ] CSS faculty vote results
 
 **Course fee (separate process, through Michelle).** Send her:
