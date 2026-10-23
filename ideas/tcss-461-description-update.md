@@ -78,6 +78,12 @@ already fits the course.
 From emails on 2026-10-22: Tom met with Aubree Steffens (SET Academic Services), who is on board.
 Michelle Miller (SET Academic and Finance Operations) handles the fee. Target: **Spring 2027**.
 
+**2026-10-23:** Charles replied to Aubree and Michelle with the marked-up description. He asked
+whether a new syllabus is needed at all, since the description only gets more general (and
+whether a fee alone requires one), and offered the draft if so. He also said the fee survey starts
+2026-10-23 in the TCSS 490 section (46 students) and stays open at least 5 days. Waiting on
+Aubree's answer about the syllabus.
+
 | Date | What |
 | --- | --- |
 | 2026-11-06 | CSS faculty meeting: vote on the description |
