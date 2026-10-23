@@ -100,6 +100,7 @@ didn't come up when Aubree tried to add him. She needs:
       proposed $75 fee covers the cost of …; we use this tool because …"), ask students for
       comments, keep the survey open at least 5 days, and download the results. Survey the
       current TCSS 490 students; what matters is showing the effort, even with few responses.
+      Survey draft: [courses/tcss-461-fee-survey.md](../courses/tcss-461-fee-survey.md)
 
 ## Open questions / risks
 
