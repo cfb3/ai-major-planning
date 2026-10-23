@@ -7,8 +7,8 @@
 **Status:** created in Canvas 2026-10-22, **unpublished**, for Charles to review:
 [TCSS 490 A Au 26, quiz 2457887](https://canvas.uw.edu/courses/1935620/quizzes/2457887).
 Before publishing, in Edit: turn on "Keep submissions anonymous", turn off showing correct
-answers (the API marked the first choice of each question "correct"), set the open dates, fill
-in the cost line, and Save. Saving also fixes the question count, which shows 0 until then.
+answers (the API marked the first choice of each question "correct"), set the open dates, and
+Save. Saving also fixes the question count, which shows 0 until then.
 
 ## How to run it
 
@@ -30,12 +30,12 @@ in the cost line, and Save. Saving also fixes the question count, which shows 0 
 
 **Intro (shown at the top):**
 
-> TCSS 490 is planned to become a permanent course, TCSS 461, starting Spring 2027. We are
-> proposing a **$75 course fee** for TCSS 461.
+> TCSS 490 is a special topics course, so it can't run indefinitely. Starting Spring 2027,
+> future students can take this material as TCSS 461 Advanced Software Engineering, an existing
+> course that already fits it. We are proposing a **$75 course fee** for TCSS 461.
 >
 > **What the fee covers:** a Claude Team account for each student for the quarter. That is the
-> same access you were given in this course. [Itemized: $__ per seat per month × __ months =
-> $__ per student; any remainder covers ___.]
+> same access you were given in this course.
 >
 > **Why we use this tool:** the course is built around working with a professional AI coding
 > tool. A course-provided account gives every student the same tool at the same level. Students
@@ -59,17 +59,28 @@ in the cost line, and Save. Saving also fixes the question count, which shows 0 
    - Not useful
    - I haven't used it
 
-3. **Is a $75 course fee a reasonable way to provide this access?**
+3. **Has the course-provided account been enough for your work in this course?**
+   - Yes, I rarely or never hit usage limits
+   - Mostly, I sometimes hit limits
+   - No, I often hit limits
+   - I haven't used it
+
+4. **Did you pay for your own AI subscription for this course?**
+   - No
+   - Yes, a standard plan
+   - Yes, a higher-usage plan (for example, Claude Max)
+
+5. **Is a $75 course fee a reasonable way to provide this access?**
    - Yes
    - Unsure
    - No
 
-4. **If the course did not provide an account, what would you most likely do?**
+6. **If the course did not provide an account, what would you most likely do?**
    - Buy my own subscription
    - Use free tools only
    - Not sure
 
-5. **Comments about the proposed fee (optional).** (essay box)
+7. **Comments about the proposed fee (optional).** (essay box)
 
 ## What to send Michelle afterwards
 
