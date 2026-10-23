@@ -394,6 +394,17 @@ table.cmp td:first-child{color:var(--term); font-weight:700; white-space:nowrap}
 }
 .deg .box h4{margin:0; font-size:1.35em; line-height:1.1}
 .deg .box small{color:var(--warm-gray); font-size:.85em}
+.deg .trend{display:none; align-items:center; gap:.35em; font-size:.92em; font-weight:700; color:var(--course-accent-dark); white-space:nowrap}
+.deg .trend svg{width:2.8em; height:1.05em; overflow:visible}
+.deg .trend path{fill:none; stroke:currentColor; stroke-width:2.2; stroke-linecap:round; stroke-linejoin:round}
+.deg .trend .tl{stroke-dasharray:50; stroke-dashoffset:50}
+.deg .trend .th{opacity:0}
+.deg.p0 .trend{display:flex}
+.deg.p0 .trend .tl{animation:drawdown 2.6s ease-in-out .4s forwards}
+.deg.p0 .trend .th{animation:headin .3s ease 2.9s forwards}
+.deg.p2 .trend{display:none}
+@keyframes drawdown{to{stroke-dashoffset:0}}
+@keyframes headin{to{opacity:1}}
 .deg .cs{left:36%; top:50%; width:21%}
 .deg .cs .lanes{display:flex; flex-direction:column; gap:.45em; margin-top:.35em}
 .deg .cs .lane{display:block; padding:.25em .7em; border-radius:4px; background:var(--subtle); font-weight:700; color:var(--def)}
@@ -479,7 +490,7 @@ table.cmp td:first-child{color:var(--term); font-weight:700; white-space:nowrap}
 .deg.p6 .enr{opacity:1; transform:translate(-50%,-50%)}
 .deg.p6 .se{transform:translate(-50%,-50%) scale(1.06); box-shadow:0 0 0 .5em var(--se-soft)}
 .deg.p7 .endq{opacity:1; transform:none; pointer-events:auto}
-@media (prefers-reduced-motion:reduce){ .deg .nd,.deg .chips span,.deg .pct,.deg .endq{transition:none} .deg .dst .roles i{animation:none; opacity:1; transform:none} }
+@media (prefers-reduced-motion:reduce){ .deg .nd,.deg .chips span,.deg .pct,.deg .endq{transition:none} .deg .dst .roles i{animation:none; opacity:1; transform:none} .deg .trend .tl{animation:none; stroke-dashoffset:0} .deg .trend .th{animation:none; opacity:1} }
 /* ---------- The B.A. sketch: curriculum blocks that rise in when the slide opens ---------- */
 .ba{--ba:#B5583C; --ml:#2F6B8A; width:min(100%, 150vh); margin:0 auto; display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:1vw; font-size:calc(var(--stage-text) * .58); text-align:left}
 .ba .blk{
@@ -537,6 +548,7 @@ table.cmp td:first-child{color:var(--term); font-weight:700; white-space:nowrap}
     <div class="nd src" data-more="Everyone who enters the program, from first-years to transfers.">
       <div class="ring"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="8" cy="8" r="3.2" fill="none" stroke="#191919" stroke-width="1.8"/><circle cx="16.5" cy="9" r="2.6" fill="none" stroke="#191919" stroke-width="1.8"/><path d="M2.8 19c.6-3.4 2.7-5.2 5.2-5.2s4.6 1.8 5.2 5.2M13.2 14.6c.9-.9 2-1.4 3.3-1.4 2.2 0 3.9 1.6 4.4 4.6" fill="none" stroke="#191919" stroke-width="1.8" stroke-linecap="round"/></svg></div>
       <b>Students</b>
+      <span class="trend"><svg viewBox="0 0 44 16" aria-hidden="true"><path class="tl" d="M2 3 L11 5 L19 4 L27 9 L34 11 L40 13.5"/><path class="th" d="M36.5 10.5 L41.5 14 L36 15.2"/></svg>Enrollment</span>
     </div>
     <div class="nd box cs" data-more="Today students choose a B.A. or a B.S. in Computer Science. Almost all B.A. graduates go to industry. B.S. graduates split between industry and grad school.">
       <h4>Computer Science</h4>
@@ -560,6 +572,7 @@ table.cmp td:first-child{color:var(--term); font-weight:700; white-space:nowrap}
     </div>
     <div class="nd dst ind" data-more="Traditional software jobs are shrinking. The growth is in work that people do with AI, across every field.">
       <b><span class="now">Industry software jobs</span><span class="next">AI-fluent professionals</span></b>
+      <span class="trend"><svg viewBox="0 0 44 16" aria-hidden="true"><path class="tl" d="M2 3 L11 5 L19 4 L27 9 L34 11 L40 13.5"/><path class="th" d="M36.5 10.5 L41.5 14 L36 15.2"/></svg>Openings</span>
       <span class="roles"><i style="--i:0">Builders</i><i style="--i:1">Integrators</i><i style="--i:2">Directors</i></span>
       <span class="pct" id="deg-ind">75%</span>
       <small><span class="now">most graduates</span><span class="next">for the AI-capable workforce</span></small>
@@ -1219,10 +1232,10 @@ table.cmp td:first-child{color:var(--term); font-weight:700; white-space:nowrap}
     const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
     const RES_SHARE = 0.25;          /* illustrative: a 75/25 split */
     const C = { ml:'#2F6B8A', se:'#B5583C', dim:'rgba(102,102,99,.16)' };
-    let sp = 1, phase = -1, dots = [], resN = 0, indN = 0, raf = 0, last = 0, spawnAcc = 0, live = false;
+    let sp = 1, phase = -1, todayT = 0, dots = [], resN = 0, indN = 0, raf = 0, last = 0, spawnAcc = 0, live = false;
 
     const S = [
-      { m:'Today', d:5200, cap:'Today, students take a B.A. or a B.S. in Computer Science.',
+      { m:'Today', d:5200, cap:'Today, students take a B.A. or a B.S. in Computer Science. Enrollment and traditional software jobs are both declining.',
         more:'Almost all B.A. graduates go to industry jobs. B.S. graduates split between industry and grad school.' },
       { d:6400, cap:'Most graduates go to industry software jobs. About a quarter go to grad school or research.',
         more:'For about a decade the degree has worked as a service degree. The percentages here are illustrative.' },
@@ -1308,7 +1321,9 @@ table.cmp td:first-child{color:var(--term); font-weight:700; white-space:nowrap}
       const dt = Math.min(0.05, (now - (last || now)) / 1000) * sp * 0.75; last = now;
       if (W !== root.clientWidth) size();
       const split = phase >= 2;
-      const rate = phase >= 6 ? 13 : 8;            /* dots per second at 1x */
+      /* During the Today beats fewer students arrive over time (enrollment declining). */
+      if (phase >= 0 && phase <= 1) todayT += dt;
+      const rate = phase >= 0 && phase <= 1 ? 8 * Math.max(0.35, 1 - todayT / 14) : 8;   /* dots per second at 1x */
       spawnAcc += dt * rate;
       while (spawnAcc >= 1) { spawn(); spawnAcc -= 1; }
       ctx.clearRect(0, 0, W, H);
@@ -1352,7 +1367,7 @@ table.cmp td:first-child{color:var(--term); font-weight:700; white-space:nowrap}
     }
     function reset(){
       Ink.beat();
-      resN = 25; indN = 75; setPct();
+      resN = 25; indN = 75; todayT = 0; setPct();
       setPhase(-1, true);
     }
     reset();
