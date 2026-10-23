@@ -8,10 +8,10 @@
 ## The idea
 
 Charles and Chris currently teach their AI software development course as TCSS 490 (Special
-Topics). To make it more permanent without the long lead time of a new course through APC, teach
-it under the existing TCSS 461 instead. The 461 description is already close; it needs small
-edits to be more generic. Charles plans to propose the change at the next CSS curriculum meeting
-(date not yet set).
+Topics: "Generative AI in Software Development"). To make it more permanent without the long lead
+time of a new course through APC, teach it under the existing TCSS 461 instead. The 461
+description is already close; it needs small edits to be more generic. The CSS faculty vote is
+on 2026-11-06, aiming for Spring 2027 (see "Process and deadlines" below).
 
 ## Why it matters
 
@@ -53,8 +53,8 @@ already fits the course.
 
 ## How it might work
 
-- Charles circulates the proposed description to faculty in advance, then brings it to the next
-  CS faculty meeting (about a week after 2026-10-22) for a vote.
+- Charles circulates the proposed description to faculty in advance, then brings it to the CSS
+  faculty meeting on 2026-11-06 for a vote.
 - Pitch: no change in scope. The edits remove a product name and a dated term and generalize one
   technique.
 - If approved, the course is offered as TCSS 461 instead of 490. Prerequisite stays TCSS 360.
@@ -63,11 +63,41 @@ already fits the course.
     centers on system design and architecture), so it can meet the graduation requirement
     TCSS 460 meets now. A design elective needs a design project for
     most of the quarter; the course's moonshot project meets that, and the course will do the
-    ABET assessment work.
+    ABET assessment work. Tom's advice (2026-10-22): present it as a **team-based capstone**
+    that builds on the theory and practice from the whole quarter and uses several design
+    elements (for example architecture, data, UI/UX, testing) to produce one final product.
   - **$75 course fee:** to pay for a Claude Team account for each student in the course.
 - Meeting materials (claude.ai, private to Charles until shared):
   [slide deck](https://claude.ai/artifact/LTNGTN7kVbjG6oCKq45B2t) ·
   [agenda doc](https://claude.ai/artifact/MD9PQZP6BNFPYHGxDvvBCw)
+
+## Process and deadlines
+
+From emails on 2026-10-22: Tom met with Aubree Steffens (SET Academic Services), who is on board.
+Michelle Miller (SET Academic and Finance Operations) handles the fee. Target: **Spring 2027**.
+
+| Date | What |
+| --- | --- |
+| 2026-11-06 | CSS faculty meeting: vote on the description (and design elective status) |
+| 2026-11-25 | Aubree's deadline to submit to APCC |
+
+**Course update (Aubree, entered in Kuali).** Tom and Chris have Kuali access; Charles's name
+didn't come up when Aubree tried to add him. She needs:
+
+- [ ] The updated catalog description
+- [ ] A syllabus: learning objectives, weekly course outline, grading details. First draft:
+      [courses/tcss-461-syllabus-draft.md](../courses/tcss-461-syllabus-draft.md)
+- [ ] CSS faculty vote results
+
+**Course fee (separate process, through Michelle).** Send her:
+
+- [ ] Justification: why the fee is needed, what students get, and an itemized table of the costs
+- [ ] Estimated number of students per offering
+- [ ] How many times a year the course is taught
+- [ ] The student feedback process. Aubree's spring 2026 process: share the justification ("The
+      proposed $75 fee covers the cost of …; we use this tool because …"), ask students for
+      comments, keep the survey open at least 5 days, and download the results. Survey the
+      current TCSS 490 students; what matters is showing the effort, even with few responses.
 
 ## Open questions / risks
 

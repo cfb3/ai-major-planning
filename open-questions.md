@@ -30,6 +30,9 @@
 ## Course logistics
 
 - **How many times can TCSS 490 be offered before it has to become a named course?**
+- **For the $75 fee request:** how many students per offering, how many offerings a year, and the
+  itemized cost per student of a Claude Team seat? Michelle Miller needs all three. See
+  [the 461 idea](ideas/tcss-461-description-update.md#process-and-deadlines).
 - **Is TCSS 461 already a design elective?** Not confirmed as of 2026-10-22. Either way, Charles
   plans to ask for a vote.
 

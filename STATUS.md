@@ -32,11 +32,9 @@ course** (Chris would teach it, as a candidate course).
   CS/ML degree and a service AI Software Engineering degree. See
   [ideas/two-degree-structure.md](ideas/two-degree-structure.md).
 - **Near-term course:** TCSS 460 is cancelled for winter and spring; TCSS 490 runs in spring
-  instead, maybe as a double section. Plan to move it permanently under TCSS 461. See
-  [ideas/tcss-461-description-update.md](ideas/tcss-461-description-update.md).
-- **Near-term move:** Charles proposes teaching the AI SWD course (currently TCSS 490) as
-  TCSS 461, with a more general description, ABET design elective status, and a $75 course fee.
-  Going to the next CSS curriculum meeting (date not set). See
+  instead, maybe as a double section. Plan to move it permanently under TCSS 461 (new
+  description, ABET design elective, $75 fee) for **Spring 2027**. Aubree (SET Academic Services)
+  is on board and will enter it in Kuali. See
   [ideas/tcss-461-description-update.md](ideas/tcss-461-description-update.md).
 
 ## Coming up
@@ -45,7 +43,8 @@ course** (Chris would teach it, as a candidate course).
 | --- | --- |
 | Fri 2026-10-23, 11:00 | Charles + Chris prep: put together an AI/SWD major plan |
 | Fri 2026-10-23, 12:30 | CS colleagues meeting ([agenda](meetings/2026-10-23-cs-colleagues.md)) |
-| ~2026-10-29 (about a week out; date not confirmed) | CS faculty meeting: Charles moves to adopt the new TCSS 461 description, make 461 a design elective, add a $75 course fee |
+| Thu 2026-11-06 | CSS faculty meeting: vote on the new TCSS 461 description and design elective status |
+| Wed 2026-11-25 | Aubree submits the TCSS 461 update to APCC (needs description, syllabus, vote results) |
 
 ## Before Friday
 
