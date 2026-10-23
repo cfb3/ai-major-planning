@@ -483,8 +483,6 @@ table.cmp td:first-child{color:var(--term); font-weight:700; white-space:nowrap}
 .ba .blk{
   background:#fff; border:1px solid var(--rule); border-top:.35em solid var(--ba); border-radius:5px;
   padding:.7em .9em; display:flex; flex-direction:column; gap:.25em; min-width:0;
-  opacity:0; transform:translateY(1.4em) scale(.96);
-  transition:opacity .5s ease, transform .7s cubic-bezier(.3,1.4,.5,1); transition-delay:calc(var(--i) * 170ms);
 }
 .ba .blk b{color:var(--ba); font-size:1.08em}
 .ba .blk small{color:var(--warm-gray); font-weight:700; font-size:.72em; letter-spacing:.07em; text-transform:uppercase}
@@ -498,12 +496,16 @@ table.cmp td:first-child{color:var(--term); font-weight:700; white-space:nowrap}
 .ba .blk.minor{background:#1F4A66; border-color:#1F4A66; padding:.9em 1.1em}
 .ba .blk.minor b{color:#fff; font-size:1.25em}
 .ba .blk.minor span{color:#DCE9F2}
-.ba-tags{display:flex; flex-wrap:wrap; justify-content:center; gap:.6em; margin-top:2vh; font-size:calc(var(--stage-text) * .6); opacity:0; transition:opacity .6s ease 1.5s}
+.ba-tags{display:flex; flex-wrap:wrap; justify-content:center; gap:.6em; margin-top:2vh; font-size:calc(var(--stage-text) * .6)}
 .ba-tags span{border:2px solid var(--course-accent); color:var(--course-accent-dark); border-radius:99px; padding:.15em .8em; font-weight:700}
-.deck-slide.on .ba .blk{opacity:1; transform:none}
-.deck-slide.on .ba-tags{opacity:1}
+/* A keyframe animation, not a transition: the slide goes from display:none to shown, and a
+   transition never runs on an element that was just hidden. */
+.deck-slide.on .ba .blk{animation:blkin .7s cubic-bezier(.3,1.4,.5,1) both; animation-delay:calc(.2s + var(--i) * 170ms)}
+.deck-slide.on .ba-tags{animation:tagsin .6s ease both; animation-delay:2s}
+@keyframes blkin{from{opacity:0; transform:translateY(1.4em) scale(.96)} to{opacity:1; transform:none}}
+@keyframes tagsin{from{opacity:0; transform:translateY(.6em)} to{opacity:1; transform:none}}
 @media (max-width:560px){ .ba{grid-template-columns:1fr} .ba .blk.minor,.ba .blk.capstone{grid-column:auto} }
-@media (prefers-reduced-motion:reduce){ .ba .blk,.ba-tags{transition:none} }
+@media (prefers-reduced-motion:reduce){ .deck-slide.on .ba .blk,.deck-slide.on .ba-tags{animation:none} }
 </style>
 <section class="deck-slide part">
   <div class="head">
