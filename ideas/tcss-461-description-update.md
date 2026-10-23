@@ -59,9 +59,11 @@ already fits the course.
   technique.
 - If approved, the course is offered as TCSS 461 instead of 490. Prerequisite stays TCSS 360.
 - Charles will also propose, at the same meeting:
-  - **ABET design elective:** count TCSS 461 as a design elective (the description already
-    centers on system design and architecture), so it can meet the graduation requirement
-    TCSS 460 meets now. A design elective needs a design project for
+  - **ABET design elective:** TCSS 461 is **already** on the approved design-elective list for
+    the B.S. CSS (found 2026-10-22; see
+    [research/abet-and-design-electives.md](../research/abet-and-design-electives.md)), so it
+    already meets the graduation requirement TCSS 460 meets. No separate vote should be needed;
+    confirm with Aubree. A design elective needs a design project for
     most of the quarter; the course's moonshot project meets that, and the course will do the
     ABET assessment work. Tom's advice (2026-10-22): present it as a **team-based capstone**
     that builds on the theory and practice from the whole quarter and uses several design
@@ -78,7 +80,7 @@ Michelle Miller (SET Academic and Finance Operations) handles the fee. Target: *
 
 | Date | What |
 | --- | --- |
-| 2026-11-06 | CSS faculty meeting: vote on the description (and design elective status) |
+| 2026-11-06 | CSS faculty meeting: vote on the description |
 | 2026-11-25 | Aubree's deadline to submit to APCC |
 
 **Course update (Aubree, entered in Kuali).** Tom and Chris have Kuali access; Charles's name

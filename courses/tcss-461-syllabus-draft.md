@@ -84,6 +84,24 @@ By the end of this course, students will be able to:
 12. Apply model-driven and automated approaches to code generation, such as domain-specific
     languages and code-generation tools, and reason about their limits
 
+### Design Elective and ABET Student Outcomes
+
+TCSS 461 is an approved design elective for the B.S. in Computer Science & Systems. The team
+capstone is the course's major project: it integrates knowledge and skills from earlier course
+work. The course contributes to these ABET student outcomes (Criteria for Accrediting Computing
+Programs, 2026–2027):
+
+- **Outcome 2:** design, implement, and evaluate a computing-based solution to meet a given set of
+  computing requirements (the capstone and its design deliverables)
+- **Outcome 5:** function effectively as a member or leader of a team (the team capstone)
+- **Outcome 3:** communicate effectively in a variety of professional contexts (design review,
+  final presentation)
+- **Outcome 6:** apply computer science theory and software development fundamentals to produce
+  computing-based solutions (objectives 8–12)
+
+[Check against the CSS program's ABET assessment map. See
+[research/abet-and-design-electives.md](../research/abet-and-design-electives.md).]
+
 ## Weekly Outline
 
 | Week | Topic | Capstone milestone |
