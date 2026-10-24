@@ -4,11 +4,11 @@
      share the justification, ask for comments, keep it open at least 5 days, download the
      results. Survey the current TCSS 490 students. [Brackets] mark what to fill in. -->
 
-**Status:** created in Canvas 2026-10-22, **unpublished**, for Charles to review:
+**Status:** **published 2026-10-24** after Chris approved it:
 [TCSS 490 A Au 26, quiz 2457887](https://canvas.uw.edu/courses/1935620/quizzes/2457887).
-Before publishing, in Edit: turn on "Keep submissions anonymous", turn off showing correct
-answers (the API marked the first choice of each question "correct"), set the open dates, and
-Save. Saving also fixes the question count, which shows 0 until then.
+Anonymous submissions on, correct answers hidden, 7 questions. Closes **Thu 2026-10-29,
+11:59 PM** Pacific (open 5+ days). After it closes, download the Survey Statistics and Student
+Analysis reports for Michelle.
 
 ## How to run it
 
