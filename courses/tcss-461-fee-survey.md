@@ -7,7 +7,8 @@
 **Status:** **published 2026-10-24** after Chris approved it:
 [TCSS 490 A Au 26, quiz 2457887](https://canvas.uw.edu/courses/1935620/quizzes/2457887).
 Anonymous submissions on, correct answers hidden, 7 questions. Closes **Thu 2026-10-29,
-11:59 PM** Pacific (open 5+ days). After it closes, download the Survey Statistics and Student
+11:59 PM** Pacific (open 5+ days). Announced to the class in a Canvas announcement on
+2026-10-24 ("Quick anonymous survey: proposed course fee"). After it closes, download the Survey Statistics and Student
 Analysis reports for Michelle.
 
 ## How to run it
