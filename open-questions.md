@@ -27,8 +27,9 @@
 
 ## Faculty
 
-- **How much faculty time is there?** Ask each colleague how many hours they'll commit. If the
-  total is too low, a full overhaul isn't viable. Raise on 2026-10-23.
+- **How much faculty time is there to build this?** If too little, a full overhaul isn't viable.
+  (We chose not to ask colleagues for hours at the 2026-10-23 meeting; see
+  [decisions.md](decisions.md).)
 
 ## Course logistics
 
